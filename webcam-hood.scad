@@ -4,7 +4,7 @@
 $fn=128;
 
 WALL_WIDTH = 2.3;
-hood_wall_width=0.6;
+HOOD_WALL_WIDTH = 0.6;
 
 bracket_depth=5 + WALL_WIDTH/2;
 bracket_width=48;
@@ -96,8 +96,8 @@ module straight_hood() {
 	difference() {
 	    // This difference make it hollow.
 	    hood_volume(0);
-	    hood_volume(-hood_wall_width);
-	    translate([0, 0, 0.1]) hood_volume(-hood_wall_width); // clean top cut.
+	    hood_volume(-HOOD_WALL_WIDTH);
+	    translate([0, 0, 0.1]) hood_volume(-HOOD_WALL_WIDTH); // clean top cut.
 	}
 	camera(); // We're a bit below. Cut that flush wherever the camera is.
     }
