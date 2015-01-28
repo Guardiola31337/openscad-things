@@ -31,9 +31,9 @@ MOUNTING_PLATE_HEIGHT = BRACKET_HEIGHT - 2;
 
 CUT_RADIUS = 2 * HOOD_DISTAL_RADIUS;
 
-PRINT_OFFSET_Y = BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
+OFFSET_Y = BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
 
-HOOD_OFFSET = [0, PRINT_OFFSET_Y, 0];
+HOOD_OFFSET = [0, OFFSET_Y, 0];
 
 module print() {
     hood();
@@ -145,7 +145,7 @@ module camera() {
 module print_bracket() {
 	// The hood needs to be turned around to be printed flat on its back.
 	rotate([180, 0, 0])
-		translate([0, PRINT_OFFSET_Y, -WALL_WIDTH])
+		translate([0, OFFSET_Y, -WALL_WIDTH])
 			clickable_bracket();
 }
 
