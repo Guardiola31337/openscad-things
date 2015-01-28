@@ -28,6 +28,7 @@ IMAGE_HEIGHT_INCLINATION = 1080/1920 * IMAGE_WIDTH_INCLINATION;
 MOUNTING_MARGIN = IMAGE_WIDTH_INCLINATION * BRACKET_DEPTH;
 MOUNTING_SPACE = 2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * IMAGE_WIDTH_INCLINATION) + 2 * MOUNTING_MARGIN;
 MOUNTING_PLATE_WIDTH = BRACKET_WIDTH - 2;
+MOUNTING_PLATE_LENGHT = BRACKET_WIDTH - 2;
 MOUNTING_PLATE_HEIGHT = BRACKET_HEIGHT - 2;
 
 CUT_RADIUS = 2 * HOOD_DISTAL_RADIUS;
@@ -59,7 +60,7 @@ module plate() {
 	offset_y = SNAP_HEIGHT / 2;
 	offset = [0, 0, offset_y];
 
-	PLATE_DIMENSIONS = [MOUNTING_PLATE_WIDTH - 2 * hole_adjust, MOUNTING_PLATE_HEIGHT - 2 * hole_adjust, SNAP_WIDTH];
+	PLATE_DIMENSIONS = [MOUNTING_PLATE_LENGHT - 2 * hole_adjust, MOUNTING_PLATE_HEIGHT - 2 * hole_adjust, SNAP_WIDTH];
 	translate(offset)
 		cube(PLATE_DIMENSIONS, center=true);
 }
@@ -69,7 +70,7 @@ module base(hole_adjust = 0) {
 		union() {
 			plate();
 
-			 //In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
+			// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 			translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
 				cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
 
