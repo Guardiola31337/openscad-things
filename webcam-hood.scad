@@ -39,8 +39,9 @@ module print() {
 }
 
 module hood() {
-    // The hood is already flush with the bottom.
-    translate([0, PRINT_OFFSET_Y, 0]) 
+	offset = [0, PRINT_OFFSET_Y, 0];
+
+    translate(offset) 
 		mounted_hood();
 }
 
