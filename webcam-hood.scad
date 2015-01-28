@@ -28,7 +28,8 @@ IMAGE_HEIGHT_INCLINATION = 1080/1920 * IMAGE_WIDTH_INCLINATION;
 // enough, so that the hood, approached from bracket_depth below will fit in the hole.
 // So the hole needs to be a bit wider by the following margin.
 mounting_margin=IMAGE_WIDTH_INCLINATION * BRACKET_DEPTH;
-mounting_space=2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * IMAGE_WIDTH_INCLINATION) + 2 * mounting_margin;
+MOUNTING_MARGIN = IMAGE_WIDTH_INCLINATION * BRACKET_DEPTH;
+mounting_space=2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * IMAGE_WIDTH_INCLINATION) + 2 * MOUNTING_MARGIN;
 mounting_plate_width = BRACKET_WIDTH - 2;
 mounting_plate_height = BRACKET_HEIGHT - 2;
 
