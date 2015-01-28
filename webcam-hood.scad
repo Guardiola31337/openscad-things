@@ -12,7 +12,7 @@ BRACKET_HEIGHT = 29.5;
 BRACKET_ANGLE = 4.7;
 
 HOOD_HEIGHT = 25;
-hood_aspect=1920/1080;
+HOOD_ASPECT = 1920/1080;
 hood_proximal_radius=4.5;
 hood_distal_radius=BRACKET_HEIGHT * 0.65;
 
@@ -28,7 +28,7 @@ image_height_inclination=1080/1920 * image_width_inclination;
 // enough, so that the hood, approached from bracket_depth below will fit in the hole.
 // So the hole needs to be a bit wider by the following margin.
 mounting_margin=image_width_inclination * BRACKET_DEPTH;
-mounting_space=2 * (hood_proximal_radius * hood_aspect + WALL_WIDTH * image_width_inclination) + 2 * mounting_margin;
+mounting_space=2 * (hood_proximal_radius * HOOD_ASPECT + WALL_WIDTH * image_width_inclination) + 2 * mounting_margin;
 mounting_plate_width = BRACKET_WIDTH - 2;
 mounting_plate_height = BRACKET_HEIGHT - 2;
 
@@ -81,13 +81,13 @@ module bracket() {
 	base_bracket();
 	// Punch out the access area.
 	translate([0, -BRACKET_HEIGHT/2, 0]) cube([mounting_space + 2 * snap_fit_gap, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
-	scale([1, 1/hood_aspect, 1]) cylinder(r=mounting_space/2 + snap_fit_gap, h=3 * WALL_WIDTH, center=true);
+	scale([1, 1/HOOD_ASPECT, 1]) cylinder(r=mounting_space/2 + snap_fit_gap, h=3 * WALL_WIDTH, center=true);
     }
 }
 
 // The solid shape of the hood.
 module hood_volume(radius_adjust=0) {
-    translate([0, 0, -WALL_WIDTH - 0.1]) scale([hood_aspect, 1, 1]) cylinder(h=HOOD_HEIGHT, r1=hood_proximal_radius + radius_adjust, r2=hood_distal_radius+radius_adjust);
+    translate([0, 0, -WALL_WIDTH - 0.1]) scale([HOOD_ASPECT, 1, 1]) cylinder(h=HOOD_HEIGHT, r1=hood_proximal_radius + radius_adjust, r2=hood_distal_radius+radius_adjust);
 }
 
 // This is more or less a funnel. The curved_hood() below makes this looks a bit nicer.
@@ -123,7 +123,7 @@ module hood_baseplate(snap_adjust=0) {
 	    
 	    // In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 	    translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2]) cube([mounting_space, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
-	    scale([1, 1/hood_aspect, 1]) cylinder(r=mounting_space/2, h=WALL_WIDTH);
+	    scale([1, 1/HOOD_ASPECT, 1]) cylinder(r=mounting_space/2, h=WALL_WIDTH);
 
 	    // rounded front.
 	    translate([-mounting_space/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2]) rotate([0, 90, 0]) cylinder(r=WALL_WIDTH/2, h=mounting_space);
