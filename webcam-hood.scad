@@ -16,7 +16,7 @@ HOOD_ASPECT = 1920/1080;
 HOOD_PROXIMAL_RADIUS = 4.5;
 HOOD_DISTAL_RADIUS = BRACKET_HEIGHT * 0.65;
 
-snap_fit_gap=0.15;         // The gap between fitting components. Determine with your printer.
+SNAP_FIT_GAP = 0.15;
 snap_width=WALL_WIDTH/2;   // Wall width where things are snapped together.
 snap_thickness=WALL_WIDTH - 0.25;
 
@@ -80,8 +80,8 @@ module bracket() {
     difference() {
 	base_bracket();
 	// Punch out the access area.
-	translate([0, -BRACKET_HEIGHT/2, 0]) cube([mounting_space + 2 * snap_fit_gap, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
-	scale([1, 1/HOOD_ASPECT, 1]) cylinder(r=mounting_space/2 + snap_fit_gap, h=3 * WALL_WIDTH, center=true);
+	translate([0, -BRACKET_HEIGHT/2, 0]) cube([mounting_space + 2 * SNAP_FIT_GAP, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
+	scale([1, 1/HOOD_ASPECT, 1]) cylinder(r=mounting_space/2 + SNAP_FIT_GAP, h=3 * WALL_WIDTH, center=true);
     }
 }
 
@@ -149,8 +149,8 @@ module mounted_hood() {
 module clickable_bracket() {
     difference() {
 	bracket();
-	hood_baseplate(-snap_fit_gap);
-	translate([0, 0, -0.1]) hood_baseplate(-snap_fit_gap); // properly punch
+	hood_baseplate(-SNAP_FIT_GAP);
+	translate([0, 0, -0.1]) hood_baseplate(-SNAP_FIT_GAP); // properly punch
     }
 }
 
