@@ -18,7 +18,6 @@ HOOD_DISTAL_RADIUS = BRACKET_HEIGHT * 0.65;
 
 SNAP_FIT_GAP = 0.25;
 SNAP_WIDTH = WALL_WIDTH/2;
-snap_thickness=WALL_WIDTH - 0.25;
 
 // The inclination is (width of the image)/(distance from image)
 image_width_inclination=109 / 80;  // actual measurement: 109 cm at 80cm distance
