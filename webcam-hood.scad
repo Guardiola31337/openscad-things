@@ -53,14 +53,13 @@ module mounted_hood() {
     curved_hood();
 }
 
-// The snap_adjust is the addional amount it the holes should be sized.
-module baseplate(snap_adjust=0) {
+module baseplate(hole_adjust = 0) {
 	difference() {
 		union() {
 			// Plate we 'mount' the hood on. This is thinner (only snap-width) than the usual wall width, because
 			// we want to snap to halfs together.
 			translate([0, 0, SNAP_WIDTH/2])
-				cube([MOUNTING_PLATE_WIDTH - 2 * snap_adjust, MOUNTING_PLATE_HEIGHT - 2 * snap_adjust, SNAP_WIDTH], center=true);
+				cube([MOUNTING_PLATE_WIDTH - 2 * hole_adjust, MOUNTING_PLATE_HEIGHT - 2 * hole_adjust, SNAP_WIDTH], center=true);
 	    
 			// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 			translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
@@ -74,15 +73,15 @@ module baseplate(snap_adjust=0) {
 		}
 		// mounting holes.
 		translate([MOUNTING_PLATE_WIDTH/2 - 2.5 - 2, MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
-			cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
+			cylinder(r=2.5 + hole_adjust, h=WALL_WIDTH + 2);
 		translate([-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
-			cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
+			cylinder(r=2.5 + hole_adjust, h=WALL_WIDTH + 2);
 
 		// and squares.
 		translate([(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
-			cube([2 + 2*snap_adjust, 6 +2* snap_adjust, 10], center=true);
+			cube([2 + 2*hole_adjust, 6 +2* hole_adjust, 10], center=true);
 		translate([-(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
-			cube([2 + 2*snap_adjust, 6 + 2*snap_adjust, 10], center=true);
+			cube([2 + 2*hole_adjust, 6 + 2*hole_adjust, 10], center=true);
 	}
 }
 
