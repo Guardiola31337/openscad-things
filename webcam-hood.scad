@@ -41,14 +41,14 @@ module print() {
 }
 
 module hood() {
-    translate(HOOD_OFFSET) 
+    translate(HOOD_OFFSET)
 		mounted_hood();
 }
 
 module mounted_hood() {
     difference() {
-		baseplate();
-		hood_volume();  // Punch a hole.
+      base();
+      hood_volume();  // Punch a hole.
     }
     curved_hood();
 }
@@ -62,15 +62,15 @@ module plate() {
 		cube([MOUNTING_PLATE_WIDTH - 2 * hole_adjust, MOUNTING_PLATE_HEIGHT - 2 * hole_adjust, SNAP_WIDTH], center=true);
 }
 
-module baseplate(hole_adjust = 0) {
+module base(hole_adjust = 0) {
 	difference() {
 		union() {
 			plate();
-	    
+
 			// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 			translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
 				cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
-			
+
 			scale([1, 1/HOOD_ASPECT, 1]) cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
 
 			// rounded front.
@@ -157,9 +157,9 @@ module print_bracket() {
 module clickable_bracket() {
 	difference() {
 		bracket();
-		baseplate(-SNAP_FIT_GAP);
+		base(-SNAP_FIT_GAP);
 		translate([0, 0, -0.1])
-			baseplate(-SNAP_FIT_GAP); // properly punch
+			base(-SNAP_FIT_GAP); // properly punch
 	}
 }
 
@@ -181,7 +181,7 @@ module base_bracket() {
     translate([-BRACKET_WIDTH/2, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
-    
+
     translate([0, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([-BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
