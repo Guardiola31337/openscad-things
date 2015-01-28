@@ -11,7 +11,7 @@ BRACKET_WIDTH = 48;
 BRACKET_HEIGHT = 29.5;
 BRACKET_ANGLE = 4.7;
 
-hood_height=25;
+HOOD_HEIGHT = 25;
 hood_aspect=1920/1080;
 hood_proximal_radius=4.5;
 hood_distal_radius=BRACKET_HEIGHT * 0.65;
@@ -43,7 +43,7 @@ module camera() {
 	translate([-38, BRACKET_HEIGHT/2, -16]) rotate([90, 0, 0]) cylinder(h=BRACKET_HEIGHT, r=5);
     }
     // The imaging area that needs to be free.
-    d = 1.5 * hood_height;
+    d = 1.5 * HOOD_HEIGHT;
     w = image_width_inclination * d / 2;
     h = image_height_inclination * d / 2;
     image_plane  = -9;
@@ -87,7 +87,7 @@ module bracket() {
 
 // The solid shape of the hood.
 module hood_volume(radius_adjust=0) {
-    translate([0, 0, -WALL_WIDTH - 0.1]) scale([hood_aspect, 1, 1]) cylinder(h=hood_height, r1=hood_proximal_radius + radius_adjust, r2=hood_distal_radius+radius_adjust);
+    translate([0, 0, -WALL_WIDTH - 0.1]) scale([hood_aspect, 1, 1]) cylinder(h=HOOD_HEIGHT, r1=hood_proximal_radius + radius_adjust, r2=hood_distal_radius+radius_adjust);
 }
 
 // This is more or less a funnel. The curved_hood() below makes this looks a bit nicer.
@@ -108,7 +108,7 @@ module curved_hood() {
     intersection() {
 	straight_hood();
 	// Make it more like a cape; cut the hood with a cylinder.
-	translate([-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(cut_radius-hood_height+WALL_WIDTH)]) rotate([0, 90, 0]) cylinder(h=2 * BRACKET_WIDTH, r=cut_radius);
+	translate([-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(cut_radius-HOOD_HEIGHT+WALL_WIDTH)]) rotate([0, 90, 0]) cylinder(h=2 * BRACKET_WIDTH, r=cut_radius);
     }
 }
 
@@ -178,7 +178,7 @@ module mounting_animation() {
     // Two 'scenes': approach and marry.
     if ($t < 0.5) {
 	assign(scene_t = 2 * (0.5 - $t)) {  // 1..0
-	    translate([0, scene_t * (BRACKET_HEIGHT + 5), scene_t * hood_height/5 + (BRACKET_DEPTH + WALL_WIDTH/2)]) rotate([scene_t * 20, 0, 0]) clickable_bracket();
+	    translate([0, scene_t * (BRACKET_HEIGHT + 5), scene_t * HOOD_HEIGHT/5 + (BRACKET_DEPTH + WALL_WIDTH/2)]) rotate([scene_t * 20, 0, 0]) clickable_bracket();
 	}
     } else {
 	assign(scene_t = 1 - 2 * ($t - 0.5)) {  // 1..0
