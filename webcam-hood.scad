@@ -8,13 +8,13 @@ HOOD_WALL_WIDTH = 0.6;
 
 BRACKET_DEPTH = 5 + WALL_WIDTH/2;
 BRACKET_WIDTH = 48;
-bracket_height=29.5;
+BRACKET_HEIGHT = 29.5;
 bracket_angle=4.7;
 
 hood_height=25;
 hood_aspect=1920/1080;
 hood_proximal_radius=4.5;
-hood_distal_radius=bracket_height * 0.65;
+hood_distal_radius=BRACKET_HEIGHT * 0.65;
 
 snap_fit_gap=0.15;         // The gap between fitting components. Determine with your printer.
 snap_width=WALL_WIDTH/2;   // Wall width where things are snapped together.
@@ -30,7 +30,7 @@ image_height_inclination=1080/1920 * image_width_inclination;
 mounting_margin=image_width_inclination * BRACKET_DEPTH;
 mounting_space=2 * (hood_proximal_radius * hood_aspect + WALL_WIDTH * image_width_inclination) + 2 * mounting_margin;
 mounting_plate_width = BRACKET_WIDTH - 2;
-mounting_plate_height = bracket_height - 2;
+mounting_plate_height = BRACKET_HEIGHT - 2;
 
 cut_radius=2 * hood_distal_radius;
 
@@ -38,9 +38,9 @@ cut_radius=2 * hood_distal_radius;
 module camera() {
     // Camera body
     hull() {
-	translate([0, 0, -12.5]) cube([60, bracket_height, 25], center=true);
-	translate([38, bracket_height/2, -16]) rotate([90, 0, 0]) cylinder(h=bracket_height, r=5);
-	translate([-38, bracket_height/2, -16]) rotate([90, 0, 0]) cylinder(h=bracket_height, r=5);
+	translate([0, 0, -12.5]) cube([60, BRACKET_HEIGHT, 25], center=true);
+	translate([38, BRACKET_HEIGHT/2, -16]) rotate([90, 0, 0]) cylinder(h=BRACKET_HEIGHT, r=5);
+	translate([-38, BRACKET_HEIGHT/2, -16]) rotate([90, 0, 0]) cylinder(h=BRACKET_HEIGHT, r=5);
     }
     // The imaging area that needs to be free.
     d = 1.5 * hood_height;
@@ -55,21 +55,21 @@ module camera() {
 
 module base_bracket() {
     // The body.
-    translate([0, 0, WALL_WIDTH/2]) cube([BRACKET_WIDTH, bracket_height + WALL_WIDTH, WALL_WIDTH], center=true);
+    translate([0, 0, WALL_WIDTH/2]) cube([BRACKET_WIDTH, BRACKET_HEIGHT + WALL_WIDTH, WALL_WIDTH], center=true);
     // 'knee'
-    translate([-BRACKET_WIDTH/2, bracket_height/2+WALL_WIDTH/2, WALL_WIDTH/2])
+    translate([-BRACKET_WIDTH/2, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
     
-    translate([0, bracket_height/2+WALL_WIDTH/2, WALL_WIDTH/2])
+    translate([0, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([-bracket_angle, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
           cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
 
-    translate([-BRACKET_WIDTH/2, -bracket_height/2-WALL_WIDTH/2, WALL_WIDTH/2])
+    translate([-BRACKET_WIDTH/2, -BRACKET_HEIGHT/2-WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
-    translate([0, -bracket_height/2-WALL_WIDTH/2, WALL_WIDTH/2])
+    translate([0, -BRACKET_HEIGHT/2-WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([bracket_angle, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
            cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
@@ -80,7 +80,7 @@ module bracket() {
     difference() {
 	base_bracket();
 	// Punch out the access area.
-	translate([0, -bracket_height/2, 0]) cube([mounting_space + 2 * snap_fit_gap, bracket_height, 2 * BRACKET_DEPTH], center=true);
+	translate([0, -BRACKET_HEIGHT/2, 0]) cube([mounting_space + 2 * snap_fit_gap, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
 	scale([1, 1/hood_aspect, 1]) cylinder(r=mounting_space/2 + snap_fit_gap, h=3 * WALL_WIDTH, center=true);
     }
 }
@@ -108,7 +108,7 @@ module curved_hood() {
     intersection() {
 	straight_hood();
 	// Make it more like a cape; cut the hood with a cylinder.
-	translate([-BRACKET_WIDTH, bracket_height/2, -(cut_radius-hood_height+WALL_WIDTH)]) rotate([0, 90, 0]) cylinder(h=2 * BRACKET_WIDTH, r=cut_radius);
+	translate([-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(cut_radius-hood_height+WALL_WIDTH)]) rotate([0, 90, 0]) cylinder(h=2 * BRACKET_WIDTH, r=cut_radius);
     }
 }
 
@@ -122,11 +122,11 @@ module hood_baseplate(snap_adjust=0) {
 	    translate([0, 0, snap_width/2]) cube([mounting_plate_width - 2 * snap_adjust, mounting_plate_height - 2 * snap_adjust, snap_width], center=true);
 	    
 	    // In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
-	    translate([0, -bracket_height/4, WALL_WIDTH/2]) cube([mounting_space, bracket_height/2+WALL_WIDTH, WALL_WIDTH], center=true);
+	    translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2]) cube([mounting_space, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
 	    scale([1, 1/hood_aspect, 1]) cylinder(r=mounting_space/2, h=WALL_WIDTH);
 
 	    // rounded front.
-	    translate([-mounting_space/2, -(bracket_height + WALL_WIDTH)/2, WALL_WIDTH/2]) rotate([0, 90, 0]) cylinder(r=WALL_WIDTH/2, h=mounting_space);
+	    translate([-mounting_space/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2]) rotate([0, 90, 0]) cylinder(r=WALL_WIDTH/2, h=mounting_space);
 	}
 	// mounting holes.
 	translate([mounting_plate_width/2 - 2.5 - 2, mounting_plate_height/2 - 4.5, -1]) cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
@@ -157,7 +157,7 @@ module clickable_bracket() {
 // Now, let's print these components next to each other. We essentially take
 // them from the mounted position and unfold them by turning the bracket 180 degrees
 // on its back.
-print_offset_y=bracket_height/2 + WALL_WIDTH + 1;
+print_offset_y=BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
 module print_hood() {
     // The hood is already flush with the bottom.
     translate([0, print_offset_y, 0]) mounted_hood();
@@ -178,7 +178,7 @@ module mounting_animation() {
     // Two 'scenes': approach and marry.
     if ($t < 0.5) {
 	assign(scene_t = 2 * (0.5 - $t)) {  // 1..0
-	    translate([0, scene_t * (bracket_height + 5), scene_t * hood_height/5 + (BRACKET_DEPTH + WALL_WIDTH/2)]) rotate([scene_t * 20, 0, 0]) clickable_bracket();
+	    translate([0, scene_t * (BRACKET_HEIGHT + 5), scene_t * hood_height/5 + (BRACKET_DEPTH + WALL_WIDTH/2)]) rotate([scene_t * 20, 0, 0]) clickable_bracket();
 	}
     } else {
 	assign(scene_t = 1 - 2 * ($t - 0.5)) {  // 1..0
