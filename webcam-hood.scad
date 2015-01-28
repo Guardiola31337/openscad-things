@@ -53,7 +53,6 @@ module mounted_hood() {
     curved_hood();
 }
 
-// We mount the hood on a base-plate, that will snap into the bracket.
 // The snap_adjust is the addional amount it the holes should be sized.
 module baseplate(snap_adjust=0) {
 	difference() {
