@@ -18,6 +18,7 @@ HOOD_DISTAL_RADIUS = BRACKET_HEIGHT * 0.65;
 
 SNAP_FIT_GAP = 0.25;
 SNAP_WIDTH = WALL_WIDTH/2;
+SNAP_HEIGHT = WALL_WIDTH / 2;
 
 IMAGE_WIDTH = 109;
 IMAGE_DISTANCE = 80;
@@ -55,7 +56,8 @@ module mounted_hood() {
 
 module plate() {
 	hole_adjust = 0; 
-	offset = [0, 0, SNAP_WIDTH / 2];
+	offset_y = SNAP_HEIGHT / 2;
+	offset = [0, 0, offset_y];
 
 	translate(offset)
 		cube([MOUNTING_PLATE_WIDTH - 2 * hole_adjust, MOUNTING_PLATE_HEIGHT - 2 * hole_adjust, SNAP_WIDTH], center=true);
