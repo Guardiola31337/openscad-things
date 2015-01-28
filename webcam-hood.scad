@@ -31,6 +31,8 @@ MOUNTING_PLATE_HEIGHT = BRACKET_HEIGHT - 2;
 
 CUT_RADIUS = 2 * HOOD_DISTAL_RADIUS;
 
+PRINT_OFFSET_Y = BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
+
 module print() {
     print_hood();
     print_bracket();
@@ -39,10 +41,9 @@ module print() {
 // Now, let's print these components next to each other. We essentially take
 // them from the mounted position and unfold them by turning the bracket 180 degrees
 // on its back.
-print_offset_y=BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
 module print_hood() {
     // The hood is already flush with the bottom.
-    translate([0, print_offset_y, 0]) 
+    translate([0, PRINT_OFFSET_Y, 0]) 
 		mounted_hood();
 }
 
@@ -146,7 +147,7 @@ module camera() {
 module print_bracket() {
 	// The hood needs to be turned around to be printed flat on its back.
 	rotate([180, 0, 0])
-		translate([0, print_offset_y, -WALL_WIDTH])
+		translate([0, PRINT_OFFSET_Y, -WALL_WIDTH])
 			clickable_bracket();
 }
 
