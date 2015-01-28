@@ -21,14 +21,14 @@ SNAP_WIDTH = WALL_WIDTH/2;
 
 IMAGE_WIDTH = 109;
 IMAGE_DISTANCE = 80;
-IMAGE_INCLINATION = IMAGE_WIDTH / IMAGE_DISTANCE;
-IMAGE_HEIGHT_INCLINATION = 1080/1920 * IMAGE_INCLINATION;
+IMAGE_WIDTH_INCLINATION = IMAGE_WIDTH / IMAGE_DISTANCE;
+IMAGE_HEIGHT_INCLINATION = 1080/1920 * IMAGE_WIDTH_INCLINATION;
 
 // The free space at the bottom in the bracket to slide the hood in. It needs to be wide
 // enough, so that the hood, approached from bracket_depth below will fit in the hole.
 // So the hole needs to be a bit wider by the following margin.
-mounting_margin=IMAGE_INCLINATION * BRACKET_DEPTH;
-mounting_space=2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * IMAGE_INCLINATION) + 2 * mounting_margin;
+mounting_margin=IMAGE_WIDTH_INCLINATION * BRACKET_DEPTH;
+mounting_space=2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * IMAGE_WIDTH_INCLINATION) + 2 * mounting_margin;
 mounting_plate_width = BRACKET_WIDTH - 2;
 mounting_plate_height = BRACKET_HEIGHT - 2;
 
@@ -44,7 +44,7 @@ module camera() {
     }
     // The imaging area that needs to be free.
     d = 1.5 * HOOD_HEIGHT;
-    w = IMAGE_INCLINATION * d / 2;
+    w = IMAGE_WIDTH_INCLINATION * d / 2;
     h = IMAGE_HEIGHT_INCLINATION * d / 2;
     image_plane  = -9;
     translate([0, 0, image_plane]) polyhedron(points = [ [0, 0, 0],
