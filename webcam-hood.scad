@@ -9,7 +9,7 @@ HOOD_WALL_WIDTH = 0.6;
 BRACKET_DEPTH = 5 + WALL_WIDTH/2;
 BRACKET_WIDTH = 48;
 BRACKET_HEIGHT = 29.5;
-bracket_angle=4.7;
+BRACKET_ANGLE = 4.7;
 
 hood_height=25;
 hood_aspect=1920/1080;
@@ -62,7 +62,7 @@ module base_bracket() {
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
     
     translate([0, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
-      rotate([-bracket_angle, 0, 0])
+      rotate([-BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
           cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
 
@@ -70,7 +70,7 @@ module base_bracket() {
       rotate([0, 90, 0])
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
     translate([0, -BRACKET_HEIGHT/2-WALL_WIDTH/2, WALL_WIDTH/2])
-      rotate([bracket_angle, 0, 0])
+      rotate([BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
            cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
 }
