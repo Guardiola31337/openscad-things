@@ -16,8 +16,8 @@ HOOD_ASPECT = 1920/1080;
 HOOD_PROXIMAL_RADIUS = 4.5;
 HOOD_DISTAL_RADIUS = BRACKET_HEIGHT * 0.65;
 
-SNAP_FIT_GAP = 0.15;
-snap_width=WALL_WIDTH/2;   // Wall width where things are snapped together.
+SNAP_FIT_GAP = 0.25;
+SNAP_WIDTH = WALL_WIDTH/2;
 snap_thickness=WALL_WIDTH - 0.25;
 
 // The inclination is (width of the image)/(distance from image)
@@ -119,7 +119,7 @@ module hood_baseplate(snap_adjust=0) {
 	union() {
 	    // Plate we 'mount' the hood on. This is thinner (only snap-width) than the usual wall width, because
 	    // we want to snap to halfs together.
-	    translate([0, 0, snap_width/2]) cube([mounting_plate_width - 2 * snap_adjust, mounting_plate_height - 2 * snap_adjust, snap_width], center=true);
+	    translate([0, 0, SNAP_WIDTH/2]) cube([mounting_plate_width - 2 * snap_adjust, mounting_plate_height - 2 * snap_adjust, SNAP_WIDTH], center=true);
 	    
 	    // In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 	    translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2]) cube([mounting_space, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
