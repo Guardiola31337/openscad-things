@@ -53,17 +53,24 @@ module mounted_hood() {
     curved_hood();
 }
 
+module plate() {
+	// Plate we 'mount' the hood on. This is thinner (only snap-width) than the usual wall width, because
+	// we want to snap to halfs together.
+	hole_adjust = 0;
+
+	translate([0, 0, SNAP_WIDTH/2])
+		cube([MOUNTING_PLATE_WIDTH - 2 * hole_adjust, MOUNTING_PLATE_HEIGHT - 2 * hole_adjust, SNAP_WIDTH], center=true);
+}
+
 module baseplate(hole_adjust = 0) {
 	difference() {
 		union() {
-			// Plate we 'mount' the hood on. This is thinner (only snap-width) than the usual wall width, because
-			// we want to snap to halfs together.
-			translate([0, 0, SNAP_WIDTH/2])
-				cube([MOUNTING_PLATE_WIDTH - 2 * hole_adjust, MOUNTING_PLATE_HEIGHT - 2 * hole_adjust, SNAP_WIDTH], center=true);
+			plate();
 	    
 			// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 			translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
 				cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
+			
 			scale([1, 1/HOOD_ASPECT, 1]) cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
 
 			// rounded front.
