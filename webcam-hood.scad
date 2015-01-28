@@ -28,8 +28,8 @@ IMAGE_HEIGHT_INCLINATION = 1080/1920 * IMAGE_WIDTH_INCLINATION;
 // enough, so that the hood, approached from bracket_depth below will fit in the hole.
 // So the hole needs to be a bit wider by the following margin.
 MOUNTING_MARGIN = IMAGE_WIDTH_INCLINATION * BRACKET_DEPTH;
-MOUNTING_SPACE=2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * IMAGE_WIDTH_INCLINATION) + 2 * MOUNTING_MARGIN;
-mounting_plate_width = BRACKET_WIDTH - 2;
+MOUNTING_SPACE = 2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * IMAGE_WIDTH_INCLINATION) + 2 * MOUNTING_MARGIN;
+MOUNTING_PLATE_WIDTH = BRACKET_WIDTH - 2;
 mounting_plate_height = BRACKET_HEIGHT - 2;
 
 cut_radius=2 * HOOD_DISTAL_RADIUS;
@@ -119,7 +119,7 @@ module hood_baseplate(snap_adjust=0) {
 	union() {
 	    // Plate we 'mount' the hood on. This is thinner (only snap-width) than the usual wall width, because
 	    // we want to snap to halfs together.
-	    translate([0, 0, SNAP_WIDTH/2]) cube([mounting_plate_width - 2 * snap_adjust, mounting_plate_height - 2 * snap_adjust, SNAP_WIDTH], center=true);
+	    translate([0, 0, SNAP_WIDTH/2]) cube([MOUNTING_PLATE_WIDTH - 2 * snap_adjust, mounting_plate_height - 2 * snap_adjust, SNAP_WIDTH], center=true);
 	    
 	    // In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 	    translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2]) cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
@@ -129,12 +129,12 @@ module hood_baseplate(snap_adjust=0) {
 	    translate([-MOUNTING_SPACE/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2]) rotate([0, 90, 0]) cylinder(r=WALL_WIDTH/2, h=MOUNTING_SPACE);
 	}
 	// mounting holes.
-	translate([mounting_plate_width/2 - 2.5 - 2, mounting_plate_height/2 - 4.5, -1]) cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
-	translate([-(mounting_plate_width/2 - 2.5 - 2), mounting_plate_height/2 - 4.5, -1]) cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
+	translate([MOUNTING_PLATE_WIDTH/2 - 2.5 - 2, mounting_plate_height/2 - 4.5, -1]) cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
+	translate([-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), mounting_plate_height/2 - 4.5, -1]) cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
 
 	// and squares.
-	translate([(mounting_plate_width + MOUNTING_SPACE) / 4, -mounting_plate_height/4, 0]) cube([2 + 2*snap_adjust, 6 +2* snap_adjust, 10], center=true);
-	translate([-(mounting_plate_width + MOUNTING_SPACE) / 4, -mounting_plate_height/4, 0]) cube([2 + 2*snap_adjust, 6 + 2*snap_adjust, 10], center=true);
+	translate([(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -mounting_plate_height/4, 0]) cube([2 + 2*snap_adjust, 6 +2* snap_adjust, 10], center=true);
+	translate([-(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -mounting_plate_height/4, 0]) cube([2 + 2*snap_adjust, 6 + 2*snap_adjust, 10], center=true);
     }
 }
 
