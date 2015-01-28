@@ -46,19 +46,19 @@ module hood() {
 }
 
 module mounted_hood() {
-    difference() {
-      base();
-      hood_volume();  // Punch a hole.
-    }
-    curved_hood();
+	difference() {
+		base();
+		hood_volume();  // Punch a hole.
+	}
+	curved_hood();
 }
 
 module plate() {
 	// Plate we 'mount' the hood on. This is thinner (only snap-width) than the usual wall width, because
 	// we want to snap to halfs together.
 	hole_adjust = 0;
-
-	translate([0, 0, SNAP_WIDTH/2])
+	SNAP_HEIGHT = SNAP_WIDTH/2;
+	translate([0, 0, SNAP_HEIGHT])
 		cube([MOUNTING_PLATE_WIDTH - 2 * hole_adjust, MOUNTING_PLATE_HEIGHT - 2 * hole_adjust, SNAP_WIDTH], center=true);
 }
 
