@@ -63,7 +63,7 @@ module plate() {
 	offset_y = SNAP_HEIGHT / 2;
 	offset = [0, 0, offset_y];
 
-	PLATE_DIMENSIONS = [MOUNTING_PLATE_LENGHT - 2 * hole_adjust, NEW_MOUNTING_PLATE_WIDTH - 2 * hole_adjust, SNAP_WIDTH];
+	PLATE_DIMENSIONS = [MOUNTING_PLATE_LENGHT - 2 * hole_adjust, NEW_MOUNTING_PLATE_WIDTH - 2 * hole_adjust, SNAP_HEIGHT];
 	translate(offset)
 		cube(PLATE_DIMENSIONS, center=true);
 }
