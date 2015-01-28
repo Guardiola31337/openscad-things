@@ -33,15 +33,15 @@ CUT_RADIUS = 2 * HOOD_DISTAL_RADIUS;
 
 PRINT_OFFSET_Y = BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
 
+HOOD_OFFSET = [0, PRINT_OFFSET_Y, 0];
+
 module print() {
     hood();
     print_bracket();
 }
 
 module hood() {
-	offset = [0, PRINT_OFFSET_Y, 0];
-
-    translate(offset) 
+    translate(HOOD_OFFSET) 
 		mounted_hood();
 }
 
