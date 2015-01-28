@@ -7,7 +7,7 @@ WALL_WIDTH = 2.3;
 HOOD_WALL_WIDTH = 0.6;
 
 BRACKET_DEPTH = 5 + WALL_WIDTH/2;
-bracket_width=48;
+BRACKET_WIDTH = 48;
 bracket_height=29.5;
 bracket_angle=4.7;
 
@@ -29,7 +29,7 @@ image_height_inclination=1080/1920 * image_width_inclination;
 // So the hole needs to be a bit wider by the following margin.
 mounting_margin=image_width_inclination * BRACKET_DEPTH;
 mounting_space=2 * (hood_proximal_radius * hood_aspect + WALL_WIDTH * image_width_inclination) + 2 * mounting_margin;
-mounting_plate_width = bracket_width - 2;
+mounting_plate_width = BRACKET_WIDTH - 2;
 mounting_plate_height = bracket_height - 2;
 
 cut_radius=2 * hood_distal_radius;
@@ -55,24 +55,24 @@ module camera() {
 
 module base_bracket() {
     // The body.
-    translate([0, 0, WALL_WIDTH/2]) cube([bracket_width, bracket_height + WALL_WIDTH, WALL_WIDTH], center=true);
+    translate([0, 0, WALL_WIDTH/2]) cube([BRACKET_WIDTH, bracket_height + WALL_WIDTH, WALL_WIDTH], center=true);
     // 'knee'
-    translate([-bracket_width/2, bracket_height/2+WALL_WIDTH/2, WALL_WIDTH/2])
+    translate([-BRACKET_WIDTH/2, bracket_height/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
-        cylinder(h=bracket_width, r=WALL_WIDTH/2);
+        cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
     
     translate([0, bracket_height/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([-bracket_angle, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
-          cube([bracket_width, WALL_WIDTH, BRACKET_DEPTH], center=true);
+          cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
 
-    translate([-bracket_width/2, -bracket_height/2-WALL_WIDTH/2, WALL_WIDTH/2])
+    translate([-BRACKET_WIDTH/2, -bracket_height/2-WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
-        cylinder(h=bracket_width, r=WALL_WIDTH/2);
+        cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
     translate([0, -bracket_height/2-WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([bracket_angle, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
-           cube([bracket_width, WALL_WIDTH, BRACKET_DEPTH], center=true);
+           cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
 }
 
 // Mounting bracket, that has some space in the front to ease mounting.
@@ -108,7 +108,7 @@ module curved_hood() {
     intersection() {
 	straight_hood();
 	// Make it more like a cape; cut the hood with a cylinder.
-	translate([-bracket_width, bracket_height/2, -(cut_radius-hood_height+WALL_WIDTH)]) rotate([0, 90, 0]) cylinder(h=2 * bracket_width, r=cut_radius);
+	translate([-BRACKET_WIDTH, bracket_height/2, -(cut_radius-hood_height+WALL_WIDTH)]) rotate([0, 90, 0]) cylinder(h=2 * BRACKET_WIDTH, r=cut_radius);
     }
 }
 
