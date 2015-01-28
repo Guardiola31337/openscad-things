@@ -14,7 +14,7 @@ BRACKET_ANGLE = 4.7;
 HOOD_HEIGHT = 25;
 HOOD_ASPECT = 1920/1080;
 HOOD_PROXIMAL_RADIUS = 4.5;
-hood_distal_radius=BRACKET_HEIGHT * 0.65;
+HOOD_DISTAL_RADIUS = BRACKET_HEIGHT * 0.65;
 
 snap_fit_gap=0.15;         // The gap between fitting components. Determine with your printer.
 snap_width=WALL_WIDTH/2;   // Wall width where things are snapped together.
@@ -32,7 +32,7 @@ mounting_space=2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * image_widt
 mounting_plate_width = BRACKET_WIDTH - 2;
 mounting_plate_height = BRACKET_HEIGHT - 2;
 
-cut_radius=2 * hood_distal_radius;
+cut_radius=2 * HOOD_DISTAL_RADIUS;
 
 // Model to play with.
 module camera() {
@@ -87,7 +87,7 @@ module bracket() {
 
 // The solid shape of the hood.
 module hood_volume(radius_adjust=0) {
-    translate([0, 0, -WALL_WIDTH - 0.1]) scale([HOOD_ASPECT, 1, 1]) cylinder(h=HOOD_HEIGHT, r1=HOOD_PROXIMAL_RADIUS + radius_adjust, r2=hood_distal_radius+radius_adjust);
+    translate([0, 0, -WALL_WIDTH - 0.1]) scale([HOOD_ASPECT, 1, 1]) cylinder(h=HOOD_HEIGHT, r1=HOOD_PROXIMAL_RADIUS + radius_adjust, r2=HOOD_DISTAL_RADIUS+radius_adjust);
 }
 
 // This is more or less a funnel. The curved_hood() below makes this looks a bit nicer.
