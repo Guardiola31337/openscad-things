@@ -6,7 +6,7 @@ $fn=128;
 WALL_WIDTH = 2.3;
 HOOD_WALL_WIDTH = 0.6;
 
-bracket_depth=5 + WALL_WIDTH/2;
+BRACKET_DEPTH = 5 + WALL_WIDTH/2;
 bracket_width=48;
 bracket_height=29.5;
 bracket_angle=4.7;
@@ -27,7 +27,7 @@ image_height_inclination=1080/1920 * image_width_inclination;
 // The free space at the bottom in the bracket to slide the hood in. It needs to be wide
 // enough, so that the hood, approached from bracket_depth below will fit in the hole.
 // So the hole needs to be a bit wider by the following margin.
-mounting_margin=image_width_inclination * bracket_depth;
+mounting_margin=image_width_inclination * BRACKET_DEPTH;
 mounting_space=2 * (hood_proximal_radius * hood_aspect + WALL_WIDTH * image_width_inclination) + 2 * mounting_margin;
 mounting_plate_width = bracket_width - 2;
 mounting_plate_height = bracket_height - 2;
@@ -63,16 +63,16 @@ module base_bracket() {
     
     translate([0, bracket_height/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([-bracket_angle, 0, 0])
-        translate([0, 0, -bracket_depth/2])
-          cube([bracket_width, WALL_WIDTH, bracket_depth], center=true);
+        translate([0, 0, -BRACKET_DEPTH/2])
+          cube([bracket_width, WALL_WIDTH, BRACKET_DEPTH], center=true);
 
     translate([-bracket_width/2, -bracket_height/2-WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
         cylinder(h=bracket_width, r=WALL_WIDTH/2);
     translate([0, -bracket_height/2-WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([bracket_angle, 0, 0])
-        translate([0, 0, -bracket_depth/2])
-           cube([bracket_width, WALL_WIDTH, bracket_depth], center=true);
+        translate([0, 0, -BRACKET_DEPTH/2])
+           cube([bracket_width, WALL_WIDTH, BRACKET_DEPTH], center=true);
 }
 
 // Mounting bracket, that has some space in the front to ease mounting.
@@ -80,7 +80,7 @@ module bracket() {
     difference() {
 	base_bracket();
 	// Punch out the access area.
-	translate([0, -bracket_height/2, 0]) cube([mounting_space + 2 * snap_fit_gap, bracket_height, 2 * bracket_depth], center=true);
+	translate([0, -bracket_height/2, 0]) cube([mounting_space + 2 * snap_fit_gap, bracket_height, 2 * BRACKET_DEPTH], center=true);
 	scale([1, 1/hood_aspect, 1]) cylinder(r=mounting_space/2 + snap_fit_gap, h=3 * WALL_WIDTH, center=true);
     }
 }
@@ -178,11 +178,11 @@ module mounting_animation() {
     // Two 'scenes': approach and marry.
     if ($t < 0.5) {
 	assign(scene_t = 2 * (0.5 - $t)) {  // 1..0
-	    translate([0, scene_t * (bracket_height + 5), scene_t * hood_height/5 + (bracket_depth + WALL_WIDTH/2)]) rotate([scene_t * 20, 0, 0]) clickable_bracket();
+	    translate([0, scene_t * (bracket_height + 5), scene_t * hood_height/5 + (BRACKET_DEPTH + WALL_WIDTH/2)]) rotate([scene_t * 20, 0, 0]) clickable_bracket();
 	}
     } else {
 	assign(scene_t = 1 - 2 * ($t - 0.5)) {  // 1..0
-	    translate([0, 0, scene_t * (bracket_depth + WALL_WIDTH/2)]) clickable_bracket();
+	    translate([0, 0, scene_t * (BRACKET_DEPTH + WALL_WIDTH/2)]) clickable_bracket();
 	}
     }
     color("lightgreen") mounted_hood();
