@@ -1,11 +1,6 @@
 // Little hood for the Logitec C920 webcam.
 // (c) h.zeller@acm.org Creative Commons license BY-SA
-//
-// Print with
-//   - initial layer 0.25 and layer-height 0.2
-//   - fill 0.4,
-//   - 2 layer shell horizontal and vertical
-//
+
 $fn=128;
 wall_width=2.3;
 hood_wall_width=0.6;
