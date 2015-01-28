@@ -47,7 +47,7 @@ module hood() {
 
 module mounted_hood() {
     difference() {
-		hood_baseplate();
+		baseplate();
 		hood_volume();  // Punch a hole.
     }
     curved_hood();
@@ -55,7 +55,7 @@ module mounted_hood() {
 
 // We mount the hood on a base-plate, that will snap into the bracket.
 // The snap_adjust is the addional amount it the holes should be sized.
-module hood_baseplate(snap_adjust=0) {
+module baseplate(snap_adjust=0) {
 	difference() {
 		union() {
 			// Plate we 'mount' the hood on. This is thinner (only snap-width) than the usual wall width, because
@@ -152,9 +152,9 @@ module print_bracket() {
 module clickable_bracket() {
 	difference() {
 		bracket();
-		hood_baseplate(-SNAP_FIT_GAP);
+		baseplate(-SNAP_FIT_GAP);
 		translate([0, 0, -0.1])
-			hood_baseplate(-SNAP_FIT_GAP); // properly punch
+			baseplate(-SNAP_FIT_GAP); // properly punch
 	}
 }
 
