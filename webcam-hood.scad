@@ -73,10 +73,13 @@ module plate(snap_adjust = 0) {
 		cube(DIMENSIONS, center = TRUE);
 }
 
-module ledge() {
-	// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
+module ledge_block() {
 	translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
 		cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
+}
+
+module ledge() {
+	ledge_block();
 
 	scale([1, 1/HOOD_ASPECT, 1])
 		cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
