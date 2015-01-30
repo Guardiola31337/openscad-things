@@ -78,11 +78,14 @@ module ledge_base() {
 		cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
 }
 
-module ledge() {
-	ledge_base();
-
+module ledge_rounded() {
 	scale([1, 1/HOOD_ASPECT, 1])
 		cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
+}
+
+module ledge() {
+	ledge_base();
+	ledge_rounded();
 
 	// rounded front.
 	translate([-MOUNTING_SPACE/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2])
