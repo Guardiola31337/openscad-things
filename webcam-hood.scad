@@ -29,7 +29,7 @@ IMAGE_HEIGHT_INCLINATION = 1080/1920 * IMAGE_WIDTH_INCLINATION;
 MOUNTING_MARGIN = IMAGE_WIDTH_INCLINATION * BRACKET_DEPTH;
 MOUNTING_SPACE = 2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + WALL_WIDTH * IMAGE_WIDTH_INCLINATION) + 2 * MOUNTING_MARGIN;
 MOUNTING_PLATE_WIDTH = BRACKET_WIDTH - 2;
-MOUNTING_PLATE_LENGHT = BRACKET_LENGHT - 2;
+HOOD_PLATE_LENGHT = BRACKET_LENGHT - 2;
 MOUNTING_PLATE_HEIGHT = BRACKET_HEIGHT - 2;
 NEW_MOUNTING_PLATE_WIDTH = NEW_BRACKET_WIDTH - 2;
 
@@ -64,8 +64,8 @@ function adjust(dimension, adjustment_factor) = dimension - (2 * adjustment_fact
 module plate(snap_adjust = 0) {
 	offset_y = SNAP_HEIGHT / 2;
 	offset = [0, 0, offset_y];
-	
-	lenght = adjust(MOUNTING_PLATE_LENGHT, snap_adjust);
+
+	lenght = adjust(HOOD_PLATE_LENGHT, snap_adjust);
 	width = adjust(NEW_MOUNTING_PLATE_WIDTH, snap_adjust);
 	DIMENSIONS = [lenght, width, SNAP_HEIGHT];
 	translate(offset)
