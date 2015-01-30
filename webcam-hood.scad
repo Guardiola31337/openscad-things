@@ -83,14 +83,16 @@ module ledge_rounded() {
 		cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
 }
 
-module ledge() {
-	ledge_base();
-	ledge_rounded();
-
-	// rounded front.
+module ledge_front() {
 	translate([-MOUNTING_SPACE/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2])
 		rotate([0, 90, 0])
 			cylinder(r=WALL_WIDTH/2, h=MOUNTING_SPACE);
+}
+
+module ledge() {
+	ledge_base();
+	ledge_rounded();
+	ledge_front();
 }
 
 module base(snap_adjust = 0) {
