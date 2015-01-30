@@ -66,7 +66,8 @@ module plate(snap_adjust = 0) {
 	offset = [0, 0, offset_y];
 	
 	lenght = adjust(MOUNTING_PLATE_LENGHT, snap_adjust);
-	DIMENSIONS = [lenght, NEW_MOUNTING_PLATE_WIDTH - 2 * snap_adjust, SNAP_HEIGHT];
+	width = adjust(NEW_MOUNTING_PLATE_WIDTH, snap_adjust);
+	DIMENSIONS = [lenght, width, SNAP_HEIGHT];
 	translate(offset)
 		cube(DIMENSIONS, center = TRUE);
 }
