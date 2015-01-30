@@ -62,10 +62,10 @@ module mounted_hood() {
 module plate(snap_adjust = 0) {
 	offset_y = SNAP_HEIGHT / 2;
 	offset = [0, 0, offset_y];
-
-	PLATE_DIMENSIONS = [MOUNTING_PLATE_LENGHT - 2 * snap_adjust, NEW_MOUNTING_PLATE_WIDTH - 2 * snap_adjust, SNAP_HEIGHT];
+	
+	DIMENSIONS = [MOUNTING_PLATE_LENGHT - 2 * snap_adjust, NEW_MOUNTING_PLATE_WIDTH - 2 * snap_adjust, SNAP_HEIGHT];
 	translate(offset)
-		cube(PLATE_DIMENSIONS, center = CENTERED);
+		cube(DIMENSIONS, center = CENTERED);
 }
 
 module base(snap_adjust = 0) {
