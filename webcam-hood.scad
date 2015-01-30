@@ -74,7 +74,8 @@ module plate(snap_adjust = 0) {
 }
 
 module ledge_base() {
-	offset = [0, -BRACKET_HEIGHT/4, WALL_WIDTH/2];
+	offset_y = -BRACKET_HEIGHT/4;
+	offset = [0, offset_y, WALL_WIDTH/2];
 
 	translate(offset)
 		cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
