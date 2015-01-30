@@ -39,6 +39,8 @@ OFFSET_Y = BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
 
 HOOD_OFFSET = [0, OFFSET_Y, 0];
 
+CENTERED = true;
+
 module print() {
     hood();
     print_bracket();
@@ -63,7 +65,7 @@ module plate(hole_adjust = 0) {
 
 	PLATE_DIMENSIONS = [MOUNTING_PLATE_LENGHT - 2 * hole_adjust, NEW_MOUNTING_PLATE_WIDTH - 2 * hole_adjust, SNAP_HEIGHT];
 	translate(offset)
-		cube(PLATE_DIMENSIONS, center=true);
+		cube(PLATE_DIMENSIONS, center = CENTERED);
 }
 
 module base(hole_adjust = 0) {
