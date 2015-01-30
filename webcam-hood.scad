@@ -62,12 +62,13 @@ module mounted_hood() {
 function adjust(dimension, adjustment_factor) = dimension - (2 * adjustment_factor);
 
 module plate(snap_adjust = 0) {
-	offset_y = SNAP_HEIGHT / 2;
-	offset = [0, 0, offset_y];
+	offset_z = SNAP_HEIGHT / 2;
+	offset = [0, 0, offset_z];
 
 	lenght = adjust(HOOD_PLATE_LENGHT, snap_adjust);
 	width = adjust(HOOD_PLATE_WIDTH, snap_adjust);
 	DIMENSIONS = [lenght, width, SNAP_HEIGHT];
+
 	translate(offset)
 		cube(DIMENSIONS, center = TRUE);
 }
