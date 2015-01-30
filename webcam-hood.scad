@@ -75,7 +75,7 @@ module plate(snap_adjust = 0) {
 
 module ledge_base() {
 	offset_y = -NEW_BRACKET_WIDTH / 4;
-	offset_z = WALL_WIDTH/2;
+	offset_z = SNAP_HEIGHT;
 	offset = [0, offset_y, offset_z];
 
 	translate(offset)
