@@ -59,25 +59,26 @@ module mounted_hood() {
 	curved_hood();
 }
 
-module plate(hole_adjust = 0) {
+module plate(snap_adjust = 0) {
 	offset_y = SNAP_HEIGHT / 2;
 	offset = [0, 0, offset_y];
 
-	PLATE_DIMENSIONS = [MOUNTING_PLATE_LENGHT - 2 * hole_adjust, NEW_MOUNTING_PLATE_WIDTH - 2 * hole_adjust, SNAP_HEIGHT];
+	PLATE_DIMENSIONS = [MOUNTING_PLATE_LENGHT - 2 * snap_adjust, NEW_MOUNTING_PLATE_WIDTH - 2 * snap_adjust, SNAP_HEIGHT];
 	translate(offset)
 		cube(PLATE_DIMENSIONS, center = CENTERED);
 }
 
-module base(hole_adjust = 0) {
+module base(snap_adjust = 0) {
 	difference() {
 		union() {
-			plate(hole_adjust);
+			plate(snap_adjust);
 
 			// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 			translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
 				cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
 
-			scale([1, 1/HOOD_ASPECT, 1]) cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
+			scale([1, 1/HOOD_ASPECT, 1])
+				cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
 
 			// rounded front.
 			translate([-MOUNTING_SPACE/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2])
@@ -86,15 +87,15 @@ module base(hole_adjust = 0) {
 		}
 		// mounting holes.
 		translate([MOUNTING_PLATE_WIDTH/2 - 2.5 - 2, MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
-			cylinder(r=2.5 + hole_adjust, h=WALL_WIDTH + 2);
+			cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
 		translate([-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
-			cylinder(r=2.5 + hole_adjust, h=WALL_WIDTH + 2);
+			cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
 
 		// and squares.
 		translate([(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
-			cube([2 + 2*hole_adjust, 6 +2* hole_adjust, 10], center=true);
+			cube([2 + 2*snap_adjust, 6 +2* snap_adjust, 10], center=true);
 		translate([-(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
-			cube([2 + 2*hole_adjust, 6 + 2*hole_adjust, 10], center=true);
+			cube([2 + 2*snap_adjust, 6 + 2*snap_adjust, 10], center=true);
 	}
 }
 
