@@ -57,8 +57,7 @@ module mounted_hood() {
 	curved_hood();
 }
 
-module plate() {
-	hole_adjust = 0; 
+module plate(hole_adjust = 0) {
 	offset_y = SNAP_HEIGHT / 2;
 	offset = [0, 0, offset_y];
 
@@ -70,7 +69,7 @@ module plate() {
 module base(hole_adjust = 0) {
 	difference() {
 		union() {
-			plate();
+			plate(hole_adjust);
 
 			// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
 			translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
