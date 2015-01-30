@@ -73,22 +73,25 @@ module plate(snap_adjust = 0) {
 		cube(DIMENSIONS, center = TRUE);
 }
 
+module ledge() {
+	// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
+	translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
+		cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
+
+	scale([1, 1/HOOD_ASPECT, 1])
+		cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
+
+	// rounded front.
+	translate([-MOUNTING_SPACE/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2])
+		rotate([0, 90, 0])
+			cylinder(r=WALL_WIDTH/2, h=MOUNTING_SPACE);
+}
+
 module base(snap_adjust = 0) {
 	difference() {
 		union() {
 			plate(snap_adjust);
-
-			// In the mounting space area, we have a thicker part of the plate, so that after mounting, things are flush.
-			translate([0, -BRACKET_HEIGHT/4, WALL_WIDTH/2])
-				cube([MOUNTING_SPACE, BRACKET_HEIGHT/2+WALL_WIDTH, WALL_WIDTH], center=true);
-
-			scale([1, 1/HOOD_ASPECT, 1])
-				cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
-
-			// rounded front.
-			translate([-MOUNTING_SPACE/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2])
-				rotate([0, 90, 0])
-					cylinder(r=WALL_WIDTH/2, h=MOUNTING_SPACE);
+			ledge();
 		}
 		// mounting holes.
 		translate([MOUNTING_PLATE_WIDTH/2 - 2.5 - 2, MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
