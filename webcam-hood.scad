@@ -59,6 +59,8 @@ module mounted_hood() {
 	curved_hood();
 }
 
+function adjust(dimension, adjustment_factor) = dimension - (2 * adjustment_factor);
+
 module plate(snap_adjust = 0) {
 	offset_y = SNAP_HEIGHT / 2;
 	offset = [0, 0, offset_y];
