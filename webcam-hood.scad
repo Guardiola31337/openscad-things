@@ -115,17 +115,21 @@ module ledge() {
 	ledge_front();
 }
 
+module holes(snap_adjust = 0) {
+	translate([MOUNTING_PLATE_WIDTH/2 - 2.5 - 2, MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
+		cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
+	translate([-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
+		cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
+}
+
 module base(snap_adjust = 0) {
 	difference() {
 		union() {
 			plate(snap_adjust);
 			ledge();
 		}
-		// mounting holes.
-		translate([MOUNTING_PLATE_WIDTH/2 - 2.5 - 2, MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
-			cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
-		translate([-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
-			cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
+		
+		holes(snap_adjust);
 
 		// and squares.
 		translate([(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
