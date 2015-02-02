@@ -5,7 +5,6 @@ $fn=128;
 
 WALL_WIDTH = 2.3;
 LEDGE_HEIGHT = 2.3;
-DIAMETER_LEDGE_FRONT = WALL_WIDTH;
 HOOD_WALL_WIDTH = 0.6;
 
 BRACKET_DEPTH = 5 + WALL_WIDTH/2;
@@ -80,8 +79,8 @@ module ledge_base() {
 	offset_y = -NEW_BRACKET_WIDTH / 4;
 	offset = [0, offset_y, SNAP_HEIGHT];
 
-	width = NEW_BRACKET_WIDTH / 2 + DIAMETER_LEDGE_FRONT;
-	dimensions = [LEDGE_LENGHT, width, DIAMETER_LEDGE_FRONT];
+	width = NEW_BRACKET_WIDTH / 2 + LEDGE_HEIGHT;
+	dimensions = [LEDGE_LENGHT, width, LEDGE_HEIGHT];
 
 	translate(offset)
 		cube(dimensions, center=TRUE);
