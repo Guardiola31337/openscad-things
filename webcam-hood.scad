@@ -4,6 +4,7 @@
 $fn=128;
 
 WALL_WIDTH = 2.3;
+LEDGE_HEIGHT = 2.3;
 DIAMETER_LEDGE_FRONT = WALL_WIDTH;
 HOOD_WALL_WIDTH = 0.6;
 
@@ -93,7 +94,7 @@ module ledge_rounded() {
 	factors = [1, axis_y, 1];
 
 	scale(factors)
-		cylinder(r = radius(LEDGE_LENGHT), h=WALL_WIDTH);
+		cylinder(r = radius(LEDGE_LENGHT), h = LEDGE_HEIGHT);
 }
 
 module ledge_front() {
