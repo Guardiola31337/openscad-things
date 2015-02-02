@@ -83,7 +83,7 @@ module ledge_base() {
 	dimensions = [LEDGE_LENGHT, width, LEDGE_HEIGHT];
 
 	translate(offset)
-		cube(dimensions, center=TRUE);
+		cube(dimensions, center = TRUE);
 }
 
 function radius(diameter) = diameter / 2;
@@ -97,7 +97,9 @@ module ledge_rounded() {
 }
 
 module ledge_front() {
-	translate([-MOUNTING_SPACE/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2])
+	offset = [-MOUNTING_SPACE/2, -(BRACKET_HEIGHT + WALL_WIDTH)/2, WALL_WIDTH/2];
+
+	translate(offset)
 		rotate([0, 90, 0])
 			cylinder(r=WALL_WIDTH/2, h=MOUNTING_SPACE);
 }
