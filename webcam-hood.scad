@@ -97,7 +97,7 @@ module ledge_rounded() {
 }
 
 module ledge_front() {
-	offset_x = -MOUNTING_SPACE / 2;
+	offset_x = -LEDGE_LENGHT / 2;
 	offset = [offset_x, -(BRACKET_HEIGHT + WALL_WIDTH) / 2, WALL_WIDTH / 2];
 
 	translate(offset)
