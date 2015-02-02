@@ -140,10 +140,13 @@ module square(snap_adjust = 0) {
 }
 
 module squares(snap_adjust = 0) {
-	translate([(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
-		square(snap_adjust);
-	translate([-(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
-		square(snap_adjust);
+	positions = [[(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0], [-(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0]];
+	number_of_squares = len(positions);
+	
+	for(i = [0 : number_of_squares + ARRAY_BASE_CORRECTION]) {
+		translate(positions[i])
+			square(snap_adjust);
+	}
 }
 
 module base(snap_adjust = 0) {
