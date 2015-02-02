@@ -20,7 +20,7 @@ HOOD_PROXIMAL_RADIUS = 4.5;
 HOOD_DISTAL_RADIUS = BRACKET_HEIGHT * 0.65;
 
 SNAP_FIT_GAP = 0.25;
-SNAP_HEIGHT = WALL_WIDTH / 2;
+SNAP_HEIGHT = LEDGE_HEIGHT / 2;
 
 IMAGE_WIDTH = 109;
 IMAGE_DISTANCE = 80;
@@ -116,7 +116,7 @@ module ledge() {
 }
 
 module holes(snap_adjust = 0) {
-	offset = [HOOD_PLATE_LENGHT / 2 - 2.5 - 2, HOOD_PLATE_WIDTH / 2 - 4.5, -1];
+	offset = [HOOD_PLATE_LENGHT / 2 - 2.5 - 2, HOOD_PLATE_WIDTH / 2 - 4.5, -SNAP_HEIGHT];
 
 	translate(offset)
 		cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
