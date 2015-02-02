@@ -83,7 +83,7 @@ module ledge_base() {
 	dimensions = [LEDGE_LENGHT, width, DIAMETER_LEDGE_FRONT];
 
 	translate(offset)
-		cube(dimensions, center=true);
+		cube(dimensions, center=TRUE);
 }
 
 module ledge_rounded() {
