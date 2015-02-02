@@ -143,7 +143,7 @@ module squares(snap_adjust = 0) {
 	translate([(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
 		square(snap_adjust);
 	translate([-(MOUNTING_PLATE_WIDTH + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0])
-		cube([2 + 2*snap_adjust, 6 + 2*snap_adjust, 10], center=true);
+		square(snap_adjust);
 }
 
 module base(snap_adjust = 0) {
