@@ -86,8 +86,8 @@ module ledge_base() {
 		cube(dimensions, center = TRUE);
 }
 
-function radius(diameter) = diameter / 2;
 function half(dimension) = dimension / 2;
+function radius(diameter) = half(diameter);
 
 module ledge_rounded() {
 	axis_y = 1 / HOOD_ASPECT;
