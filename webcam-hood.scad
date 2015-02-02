@@ -140,7 +140,7 @@ module square(snap_adjust = 0) {
 }
 
 module squares(snap_adjust = 0) {
-	positions = [[(HOOD_PLATE_LENGHT + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0], [-(HOOD_PLATE_LENGHT + MOUNTING_SPACE) / 4, -MOUNTING_PLATE_HEIGHT/4, 0]];
+	positions = [[(HOOD_PLATE_LENGHT + LEDGE_LENGHT) / 4, -MOUNTING_PLATE_HEIGHT / 4, 0], [-(HOOD_PLATE_LENGHT + LEDGE_LENGHT) / 4, -MOUNTING_PLATE_HEIGHT / 4, 0]];
 	number_of_squares = len(positions);
 	
 	for(i = [0 : number_of_squares + ARRAY_BASE_CORRECTION]) {
