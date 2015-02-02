@@ -69,10 +69,10 @@ module plate(snap_adjust = 0) {
 
 	lenght = adjust(HOOD_PLATE_LENGHT, snap_adjust);
 	width = adjust(HOOD_PLATE_WIDTH, snap_adjust);
-	DIMENSIONS = [lenght, width, SNAP_HEIGHT];
+	dimensions = [lenght, width, SNAP_HEIGHT];
 
 	translate(offset)
-		cube(DIMENSIONS, center = TRUE);
+		cube(dimensions, center = TRUE);
 }
 
 module ledge_base() {
