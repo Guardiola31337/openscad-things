@@ -86,12 +86,14 @@ module ledge_base() {
 		cube(dimensions, center=TRUE);
 }
 
+function radius(diameter) = diameter / 2;
+
 module ledge_rounded() {
 	axis_y = 1 / HOOD_ASPECT;
 	factors = [1, axis_y, 1];
 
 	scale(factors)
-		cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
+		cylinder(r = radius(MOUNTING_SPACE), h=WALL_WIDTH);
 }
 
 module ledge_front() {
