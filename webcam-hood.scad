@@ -125,13 +125,12 @@ module hole(snap_adjust = 0) {
 
 module holes(snap_adjust = 0) {
 	positions = [[half(HOOD_PLATE_LENGHT) - 2.5 - 2, half(HOOD_PLATE_WIDTH) - 4.5, -SNAP_HEIGHT], [-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), MOUNTING_PLATE_HEIGHT/2 - 4.5, -1]];
-	radius = HOLE_RADIUS + snap_adjust;
 
 	translate(positions[0])
 		hole(snap_adjust);
 
 	translate(positions[1])
-		cylinder(r = radius, h = LEDGE_HEIGHT + 2);
+		hole(snap_adjust);
 }
 
 module base(snap_adjust = 0) {
