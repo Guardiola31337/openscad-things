@@ -78,7 +78,8 @@ module ledge_base() {
 	offset_y = -NEW_BRACKET_WIDTH / 4;
 	offset = [0, offset_y, SNAP_HEIGHT];
 
-	width = NEW_BRACKET_WIDTH / 2 + WALL_WIDTH;
+	DIAMETER_LEDGE_FRONT = WALL_WIDTH;
+	width = NEW_BRACKET_WIDTH / 2 + DIAMETER_LEDGE_FRONT;
 	dimensions = [LEDGE_LENGHT, width, WALL_WIDTH];
 
 	translate(offset)
