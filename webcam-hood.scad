@@ -87,6 +87,7 @@ module ledge_base() {
 }
 
 function radius(diameter) = diameter / 2;
+function half(dimension) = dimension / 2;
 
 module ledge_rounded() {
 	axis_y = 1 / HOOD_ASPECT;
@@ -97,7 +98,7 @@ module ledge_rounded() {
 }
 
 module ledge_front() {
-	offset_x = -LEDGE_LENGHT / 2;
+	offset_x = half(-LEDGE_LENGHT);
 	offset = [offset_x, -(BRACKET_HEIGHT + WALL_WIDTH) / 2, WALL_WIDTH / 2];
 
 	translate(offset)
