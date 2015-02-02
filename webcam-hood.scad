@@ -93,7 +93,7 @@ module ledge_rounded() {
 	factors = [1, axis_y, 1];
 
 	scale(factors)
-		cylinder(r = radius(MOUNTING_SPACE), h=WALL_WIDTH);
+		cylinder(r = radius(LEDGE_LENGHT), h=WALL_WIDTH);
 }
 
 module ledge_front() {
