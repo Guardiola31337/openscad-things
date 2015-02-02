@@ -131,7 +131,7 @@ module holes(snap_adjust = 0) {
 		hole(snap_adjust);
 
 	translate(positions[1])
-		cylinder(r = radius, h = WALL_WIDTH + 2);
+		cylinder(r = radius, h = LEDGE_HEIGHT + 2);
 }
 
 module base(snap_adjust = 0) {
