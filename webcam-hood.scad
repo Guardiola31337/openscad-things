@@ -100,7 +100,7 @@ module ledge_rounded() {
 module ledge_front() {
 	offset_x = half(-LEDGE_LENGHT);
 	offset_y = half(-(NEW_BRACKET_WIDTH + LEDGE_HEIGHT));
-	offset = [offset_x, offset_y, half(LEDGE_HEIGHT)];
+	offset = [offset_x, offset_y, radius(LEDGE_HEIGHT)];
 
 	translate(offset)
 		rotate([0, 90, 0])
