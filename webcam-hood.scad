@@ -106,7 +106,7 @@ module ledge_front() {
 
 	translate(offset)
 		rotate(LYING)
-			cylinder(r=WALL_WIDTH/2, h=MOUNTING_SPACE);
+			cylinder(r = radius(WALL_WIDTH), h = MOUNTING_SPACE);
 }
 
 module ledge() {
