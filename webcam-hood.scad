@@ -35,6 +35,8 @@ MOUNTING_PLATE_HEIGHT = BRACKET_HEIGHT - 2;
 HOOD_PLATE_LENGHT = BRACKET_LENGHT - 2;
 HOOD_PLATE_WIDTH = NEW_BRACKET_WIDTH - 2;
 
+HOLE_RADIUS = 2.5;
+
 CUT_RADIUS = 2 * HOOD_DISTAL_RADIUS;
 
 OFFSET_Y = BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
@@ -117,7 +119,7 @@ module ledge() {
 
 module holes(snap_adjust = 0) {
 	offset = [half(HOOD_PLATE_LENGHT) - 2.5 - 2, half(HOOD_PLATE_WIDTH) - 4.5, -SNAP_HEIGHT];
-	radius = 2.5 + snap_adjust;
+	radius = HOLE_RADIUS + snap_adjust;
 
 	translate(offset)
 		cylinder(r = radius, h = WALL_WIDTH + 2);
