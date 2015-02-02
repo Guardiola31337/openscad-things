@@ -47,6 +47,8 @@ TRUE = true;
 
 LYING = [0, 90, 0];
 
+ARRAY_BASE_CORRECTION = -1;
+
 module print() {
     hood();
     print_bracket();
@@ -127,7 +129,7 @@ module holes(snap_adjust = 0) {
 	positions = [[half(HOOD_PLATE_LENGHT) - 2.5 - 2, half(HOOD_PLATE_WIDTH) - 4.5, -SNAP_HEIGHT], [-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), MOUNTING_PLATE_HEIGHT/2 - 4.5, -1]];
 	number_of_holes = len(positions);
 	
-	for(i = [0 : number_of_holes - 1]) {
+	for(i = [0 : number_of_holes + ARRAY_BASE_CORRECTION]) {
 		translate(positions[i])
 			hole(snap_adjust);
 	}
