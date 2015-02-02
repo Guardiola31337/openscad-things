@@ -99,7 +99,7 @@ module ledge_rounded() {
 
 module ledge_front() {
 	offset_x = half(-LEDGE_LENGHT);
-	offset_y = -(NEW_BRACKET_WIDTH + WALL_WIDTH) / 2;
+	offset_y = half(-(NEW_BRACKET_WIDTH + WALL_WIDTH));
 	offset = [offset_x, offset_y, WALL_WIDTH / 2];
 
 	translate(offset)
