@@ -122,7 +122,7 @@ module holes(snap_adjust = 0) {
 	radius = HOLE_RADIUS + snap_adjust;
 
 	translate(offset)
-		cylinder(r = radius, h = WALL_WIDTH + 2);
+		cylinder(r = radius, h = LEDGE_HEIGHT + 2);
 
 	translate([-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
 		cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
