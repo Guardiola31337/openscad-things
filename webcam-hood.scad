@@ -43,6 +43,8 @@ HOOD_OFFSET = [0, OFFSET_Y, 0];
 
 TRUE = true;
 
+LYING = [0, 90, 0];
+
 module print() {
     hood();
     print_bracket();
@@ -103,7 +105,7 @@ module ledge_front() {
 	offset = [offset_x, offset_y, radius(LEDGE_HEIGHT)];
 
 	translate(offset)
-		rotate([0, 90, 0])
+		rotate(LYING)
 			cylinder(r=WALL_WIDTH/2, h=MOUNTING_SPACE);
 }
 
