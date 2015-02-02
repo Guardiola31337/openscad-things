@@ -116,7 +116,7 @@ module ledge() {
 }
 
 module holes(snap_adjust = 0) {
-	offset = [half(HOOD_PLATE_LENGHT) - 2.5 - 2, HOOD_PLATE_WIDTH / 2 - 4.5, -SNAP_HEIGHT];
+	offset = [half(HOOD_PLATE_LENGHT) - 2.5 - 2, half(HOOD_PLATE_WIDTH) - 4.5, -SNAP_HEIGHT];
 
 	translate(offset)
 		cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
