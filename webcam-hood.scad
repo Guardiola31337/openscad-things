@@ -116,8 +116,11 @@ module ledge() {
 }
 
 module holes(snap_adjust = 0) {
-	translate([MOUNTING_PLATE_WIDTH/2 - 2.5 - 2, MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
+	offset = [MOUNTING_PLATE_WIDTH/2 - 2.5 - 2, MOUNTING_PLATE_HEIGHT/2 - 4.5, -1];
+
+	translate(offset)
 		cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
+
 	translate([-(MOUNTING_PLATE_WIDTH/2 - 2.5 - 2), MOUNTING_PLATE_HEIGHT/2 - 4.5, -1])
 		cylinder(r=2.5 + snap_adjust, h=WALL_WIDTH + 2);
 }
