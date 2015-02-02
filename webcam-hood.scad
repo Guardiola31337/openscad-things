@@ -87,8 +87,8 @@ module ledge_base() {
 }
 
 module ledge_rounded() {
-	scale_axis_y = 1 / HOOD_ASPECT;
-	factors = [1, scale_axis_y, 1];
+	axis_y = 1 / HOOD_ASPECT;
+	factors = [1, axis_y, 1];
 
 	scale(factors)
 		cylinder(r=MOUNTING_SPACE/2, h=WALL_WIDTH);
