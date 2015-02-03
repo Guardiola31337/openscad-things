@@ -235,7 +235,7 @@ module right_block() {
 	
 	translate(offset)
 		rotate(RIGHT)
-			cylinder(h=BRACKET_HEIGHT, r=5);
+			cylinder(h = NEW_BRACKET_WIDTH, r = 5);
 }
 
 module left_block() {
