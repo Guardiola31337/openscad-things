@@ -166,13 +166,6 @@ module hood_hole(radius_adjust = 0) {
 			cylinder(h=HOOD_HEIGHT, r1=HOOD_PROXIMAL_RADIUS + radius_adjust, r2=HOOD_DISTAL_RADIUS+radius_adjust);
 }
 
-// The solid shape of the hood.
-module hood_volume(radius_adjust=0) {
-	translate([0, 0, -WALL_WIDTH - 0.1])
-		scale([HOOD_ASPECT, 1, 1])
-			cylinder(h=HOOD_HEIGHT, r1=HOOD_PROXIMAL_RADIUS + radius_adjust, r2=HOOD_DISTAL_RADIUS+radius_adjust);
-}
-
 // Let's curve the top off a bit. We are mostly interested in blocking light from the top.
 module curved_hood() {
 	intersection() {
@@ -189,10 +182,10 @@ module straight_hood() {
 	difference() {
 		difference() {
 			// This difference make it hollow.
-			hood_volume(0);
-			hood_volume(-HOOD_WALL_WIDTH);
+			hood_hole(0);
+			hood_hole(-HOOD_WALL_WIDTH);
 			translate([0, 0, 0.1])
-				hood_volume(-HOOD_WALL_WIDTH); // clean top cut.
+				hood_hole(-HOOD_WALL_WIDTH); // clean top cut.
 		}
 	camera(); // We're a bit below. Cut that flush wherever the camera is.
 	}
