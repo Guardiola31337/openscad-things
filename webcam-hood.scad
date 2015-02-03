@@ -169,7 +169,7 @@ module square(snap_adjust = 0) {
 	width = adjust_up(SQUARE_WIDTH, snap_adjust);
 	dimensions = [lenght, width, LEDGE_HEIGHT + 2];
 
-	cube(dimensions, center=true);
+	cube(dimensions, center = TRUE);
 }
 
 module hood_block(radius_adjust = 0) {
