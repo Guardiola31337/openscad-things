@@ -137,7 +137,7 @@ module holes(snap_adjust = 0) {
 }
 
 module square(snap_adjust = 0) {
-	dimensions = [SQUARE_LENGHT + 2 * snap_adjust, SQUARE_WIDTH + 2 * snap_adjust, 10];
+	dimensions = [SQUARE_LENGHT + 2 * snap_adjust, SQUARE_WIDTH + 2 * snap_adjust, LEDGE_HEIGHT + 2];
 
 	cube(dimensions, center=true);
 }
