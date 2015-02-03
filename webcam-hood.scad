@@ -65,7 +65,7 @@ module mounted_hood() {
 		base();
 		hood_hole();
 	}
-	curved_hood();
+	lens_hood();
 }
 
 function adjust_down(dimension, adjustment_factor) = dimension - (2 * adjustment_factor);
@@ -179,8 +179,7 @@ module hood_hole(radius_adjust = 0) {
 			cylinder(h = HOOD_HEIGHT, r1 = radius_bottom, r2 = radius_top);
 }
 
-// Let's curve the top off a bit. We are mostly interested in blocking light from the top.
-module curved_hood() {
+module lens_hood() {
 	intersection() {
 		straight_hood();
 		// Make it more like a cape; cut the hood with a cylinder.
