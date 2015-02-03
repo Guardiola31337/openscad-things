@@ -216,9 +216,7 @@ module camera() {
 	hull() {
 		central_block();
 		right_block();
-		translate([-38, BRACKET_HEIGHT/2, -16])
-			rotate([90, 0, 0])
-				cylinder(h=BRACKET_HEIGHT, r=5);
+		left_block();
 	}
 }
 
@@ -229,6 +227,12 @@ module central_block() {
 
 module right_block() {
 	translate([38, BRACKET_HEIGHT/2, -16])
+		rotate([90, 0, 0])
+			cylinder(h=BRACKET_HEIGHT, r=5);
+}
+
+module left_block() {
+	translate([-38, BRACKET_HEIGHT/2, -16])
 		rotate([90, 0, 0])
 			cylinder(h=BRACKET_HEIGHT, r=5);
 }
