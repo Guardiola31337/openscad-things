@@ -213,9 +213,20 @@ module hollow_top() {
 		hood_block(-LENS_HOOD_WIDTH);
 }
 
-// Model to play with.
 module camera() {
-	// Camera body
+	body();
+	
+	// The imaging area that needs to be free.
+	d = 1.5 * HOOD_HEIGHT;
+	w = IMAGE_WIDTH_INCLINATION * d / 2;
+	h = IMAGE_HEIGHT_INCLINATION * d / 2;
+	image_plane  = -9;
+	translate([0, 0, image_plane])
+		polyhedron(points = [ [0, 0, 0], [-w, -h, d], [w, -h, d], [w, h, d], [-w, h, d] ],
+					faces = [ [ 0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 1], [1, 2, 3], [1, 3, 4] ]);
+}
+
+module body() {
 	hull() {
 		translate([0, 0, -12.5])
 			cube([60, BRACKET_HEIGHT, 25], center=true);
@@ -226,14 +237,6 @@ module camera() {
 			rotate([90, 0, 0])
 				cylinder(h=BRACKET_HEIGHT, r=5);
 	}
-	// The imaging area that needs to be free.
-	d = 1.5 * HOOD_HEIGHT;
-	w = IMAGE_WIDTH_INCLINATION * d / 2;
-	h = IMAGE_HEIGHT_INCLINATION * d / 2;
-	image_plane  = -9;
-	translate([0, 0, image_plane])
-		polyhedron(points = [ [0, 0, 0], [-w, -h, d], [w, -h, d], [w, h, d], [-w, h, d] ],
-					faces = [ [ 0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 1], [1, 2, 3], [1, 3, 4] ]);
 }
 
 module cut_hood() {
