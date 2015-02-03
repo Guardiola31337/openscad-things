@@ -63,7 +63,7 @@ module hood() {
 module mounted_hood() {
 	difference() {
 		base();
-		hood_hole();
+		hood_block();
 	}
 	lens_hood();
 }
@@ -168,7 +168,7 @@ module base(snap_adjust = 0) {
 	}
 }
 
-module hood_hole(radius_adjust = 0) {
+module hood_block(radius_adjust = 0) {
 	offset = [0, 0, -LEDGE_HEIGHT - 0.1];
 	factors = [HOOD_ASPECT, 1, 1];
 	radius_bottom = HOOD_PROXIMAL_RADIUS + radius_adjust;
@@ -194,10 +194,10 @@ module lens_hood() {
 
 module hollow_hood() {
 	difference() {
-		hood_hole(0);
-		hood_hole(-HOOD_WALL_WIDTH);
+		hood_block(0);
+		hood_block(-HOOD_WALL_WIDTH);
 		translate([0, 0, 0.1])
-			hood_hole(-HOOD_WALL_WIDTH); // clean top cut.
+			hood_block(-HOOD_WALL_WIDTH); // clean top cut.
 	}
 }
 
