@@ -179,13 +179,16 @@ module hood_hole(radius_adjust = 0) {
 			cylinder(h = HOOD_HEIGHT, r1 = radius_bottom, r2 = radius_top);
 }
 
+module cut_hood() {
+	translate([-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)])
+		rotate([0, 90, 0])
+			cylinder(h=2 * BRACKET_WIDTH, r=CUT_RADIUS);
+}
+
 module lens_hood() {
 	intersection() {
 		straight_hood();
-		// Make it more like a cape; cut the hood with a cylinder.
-		translate([-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)])
-			rotate([0, 90, 0])
-				cylinder(h=2 * BRACKET_WIDTH, r=CUT_RADIUS);
+		cut_hood();
 	}
 }
 
