@@ -5,7 +5,7 @@ $fn=128;
 
 WALL_WIDTH = 2.3;
 LEDGE_HEIGHT = 2.3;
-HOOD_WALL_WIDTH = 0.6;
+LENS_HOOD_WIDTH = 0.6;
 
 BRACKET_DEPTH = 5 + WALL_WIDTH/2;
 BRACKET_WIDTH = 48;
@@ -200,7 +200,7 @@ module straight_hood() {
 module funnel_hood() {
 	difference() {
 		hood_block(0);
-		hood_block(-HOOD_WALL_WIDTH);
+		hood_block(-LENS_HOOD_WIDTH);
 		hollow_top();
 	}
 }
@@ -208,7 +208,7 @@ module funnel_hood() {
 
 module hollow_top() {
 	translate([0, 0, 0.1])
-		hood_block(-HOOD_WALL_WIDTH);
+		hood_block(-LENS_HOOD_WIDTH);
 }
 
 // Model to play with.
