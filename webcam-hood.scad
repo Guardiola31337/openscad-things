@@ -60,102 +60,15 @@ module hood() {
 		mounted_hood();
 }
 
-module hood_base() {
-	difference() {
-		base();
-		hood_block();
-	}
-}
-
 module mounted_hood() {
 	hood_base();
 	lens_hood();
 }
 
-function adjust_down(dimension, adjustment_factor) = dimension - (2 * adjustment_factor);
-function adjust_up(dimension, adjustment_factor) = dimension + (2 * adjustment_factor);
-
-module plate(snap_adjust = 0) {
-	offset_z = SNAP_HEIGHT / 2;
-	offset = [0, 0, offset_z];
-
-	lenght = adjust_down(HOOD_PLATE_LENGHT, snap_adjust);
-	width = adjust_down(HOOD_PLATE_WIDTH, snap_adjust);
-	dimensions = [lenght, width, SNAP_HEIGHT];
-
-	translate(offset)
-		cube(dimensions, center = TRUE);
-}
-
-module ledge_base() {
-	offset_y = -NEW_BRACKET_WIDTH / 4;
-	offset = [0, offset_y, SNAP_HEIGHT];
-
-	width = NEW_BRACKET_WIDTH / 2 + LEDGE_HEIGHT;
-	dimensions = [LEDGE_LENGHT, width, LEDGE_HEIGHT];
-
-	translate(offset)
-		cube(dimensions, center = TRUE);
-}
-
-function half(dimension) = dimension / 2;
-function radius(diameter) = half(diameter);
-
-module ledge_rounded() {
-	axis_y = 1 / HOOD_ASPECT;
-	factors = [1, axis_y, 1];
-
-	scale(factors)
-		cylinder(r = radius(LEDGE_LENGHT), h = LEDGE_HEIGHT);
-}
-
-module ledge_front() {
-	offset_x = half(-LEDGE_LENGHT);
-	offset_y = half(-(NEW_BRACKET_WIDTH + LEDGE_HEIGHT));
-	offset = [offset_x, offset_y, radius(LEDGE_HEIGHT)];
-
-	translate(offset)
-		rotate(LYING)
-			cylinder(r = radius(LEDGE_HEIGHT), h = LEDGE_LENGHT);
-}
-
-module ledge() {
-	ledge_base();
-	ledge_rounded();
-	ledge_front();
-}
-
-module hole(snap_adjust = 0) {
-	radius = HOLE_RADIUS + snap_adjust;
-
-	cylinder(r = radius, h = LEDGE_HEIGHT + 2);
-}
-
-module holes(snap_adjust = 0) {
-	positions = [[half(HOOD_PLATE_LENGHT) - 2.5 - 2, half(HOOD_PLATE_WIDTH) - 4.5, -SNAP_HEIGHT], [-(half(HOOD_PLATE_LENGHT) - 2.5 - 2), half(HOOD_PLATE_WIDTH) - 4.5, -SNAP_HEIGHT]];
-	number_of_holes = len(positions);
-	
-	for(i = [0 : number_of_holes + ARRAY_BASE_CORRECTION]) {
-		translate(positions[i])
-			hole(snap_adjust);
-	}
-}
-
-module square(snap_adjust = 0) {
-	lenght = adjust_up(SQUARE_LENGHT, snap_adjust);
-	width = adjust_up(SQUARE_WIDTH, snap_adjust);
-	dimensions = [lenght, width, LEDGE_HEIGHT + 2];
-
-	cube(dimensions, center=true);
-}
-
-module squares(snap_adjust = 0) {
-	positions = [[(HOOD_PLATE_LENGHT + LEDGE_LENGHT) / 4, -HOOD_PLATE_WIDTH / 4, 0], [-(HOOD_PLATE_LENGHT + LEDGE_LENGHT) / 4, -HOOD_PLATE_WIDTH / 4, 0]];
-	number_of_squares = len(positions);
-	
-	for(i = [0 : number_of_squares + ARRAY_BASE_CORRECTION]) {
-		translate(positions[i])
-			square(snap_adjust);
+module hood_base() {
+	difference() {
+		base();
+		hood_block();
 	}
 }
 
@@ -172,6 +85,93 @@ module base(snap_adjust = 0) {
 	}
 }
 
+module plate(snap_adjust = 0) {
+	offset_z = SNAP_HEIGHT / 2;
+	offset = [0, 0, offset_z];
+
+	lenght = adjust_down(HOOD_PLATE_LENGHT, snap_adjust);
+	width = adjust_down(HOOD_PLATE_WIDTH, snap_adjust);
+	dimensions = [lenght, width, SNAP_HEIGHT];
+
+	translate(offset)
+		cube(dimensions, center = TRUE);
+}
+
+function adjust_down(dimension, adjustment_factor) = dimension - (2 * adjustment_factor);
+function adjust_up(dimension, adjustment_factor) = dimension + (2 * adjustment_factor);
+
+module ledge() {
+	ledge_base();
+	ledge_rounded();
+	ledge_front();
+}
+
+module ledge_base() {
+	offset_y = -NEW_BRACKET_WIDTH / 4;
+	offset = [0, offset_y, SNAP_HEIGHT];
+
+	width = NEW_BRACKET_WIDTH / 2 + LEDGE_HEIGHT;
+	dimensions = [LEDGE_LENGHT, width, LEDGE_HEIGHT];
+
+	translate(offset)
+		cube(dimensions, center = TRUE);
+}
+
+module ledge_rounded() {
+	axis_y = 1 / HOOD_ASPECT;
+	factors = [1, axis_y, 1];
+
+	scale(factors)
+		cylinder(r = radius(LEDGE_LENGHT), h = LEDGE_HEIGHT);
+}
+
+function half(dimension) = dimension / 2;
+function radius(diameter) = half(diameter);
+
+module ledge_front() {
+	offset_x = half(-LEDGE_LENGHT);
+	offset_y = half(-(NEW_BRACKET_WIDTH + LEDGE_HEIGHT));
+	offset = [offset_x, offset_y, radius(LEDGE_HEIGHT)];
+
+	translate(offset)
+		rotate(LYING)
+			cylinder(r = radius(LEDGE_HEIGHT), h = LEDGE_LENGHT);
+}
+
+module holes(snap_adjust = 0) {
+	positions = [[half(HOOD_PLATE_LENGHT) - 2.5 - 2, half(HOOD_PLATE_WIDTH) - 4.5, -SNAP_HEIGHT], [-(half(HOOD_PLATE_LENGHT) - 2.5 - 2), half(HOOD_PLATE_WIDTH) - 4.5, -SNAP_HEIGHT]];
+	number_of_holes = len(positions);
+	
+	for(i = [0 : number_of_holes + ARRAY_BASE_CORRECTION]) {
+		translate(positions[i])
+			hole(snap_adjust);
+	}
+}
+
+module hole(snap_adjust = 0) {
+	radius = HOLE_RADIUS + snap_adjust;
+
+	cylinder(r = radius, h = LEDGE_HEIGHT + 2);
+}
+
+module squares(snap_adjust = 0) {
+	positions = [[(HOOD_PLATE_LENGHT + LEDGE_LENGHT) / 4, -HOOD_PLATE_WIDTH / 4, 0], [-(HOOD_PLATE_LENGHT + LEDGE_LENGHT) / 4, -HOOD_PLATE_WIDTH / 4, 0]];
+	number_of_squares = len(positions);
+	
+	for(i = [0 : number_of_squares + ARRAY_BASE_CORRECTION]) {
+		translate(positions[i])
+			square(snap_adjust);
+	}
+}
+
+module square(snap_adjust = 0) {
+	lenght = adjust_up(SQUARE_LENGHT, snap_adjust);
+	width = adjust_up(SQUARE_WIDTH, snap_adjust);
+	dimensions = [lenght, width, LEDGE_HEIGHT + 2];
+
+	cube(dimensions, center=true);
+}
+
 module hood_block(radius_adjust = 0) {
 	offset = [0, 0, -LEDGE_HEIGHT - 0.1];
 	factors = [HOOD_ASPECT, 1, 1];
@@ -183,12 +183,6 @@ module hood_block(radius_adjust = 0) {
 			cylinder(h = HOOD_HEIGHT, r1 = radius_bottom, r2 = radius_top);
 }
 
-module cut_hood() {
-	translate([-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)])
-		rotate([0, 90, 0])
-			cylinder(h=2 * BRACKET_WIDTH, r=CUT_RADIUS);
-}
-
 module lens_hood() {
 	intersection() {
 		straight_hood();
@@ -196,9 +190,11 @@ module lens_hood() {
 	}
 }
 
-module hollow_top() {
-	translate([0, 0, 0.1])
-		hood_block(-HOOD_WALL_WIDTH);
+module straight_hood() {
+	difference() {
+		funnel_hood();
+		camera(); // We're a bit below. Cut that flush wherever the camera is.
+	}
 }
 
 module funnel_hood() {
@@ -209,11 +205,10 @@ module funnel_hood() {
 	}
 }
 
-module straight_hood() {
-	difference() {
-		funnel_hood();
-		camera(); // We're a bit below. Cut that flush wherever the camera is.
-	}
+
+module hollow_top() {
+	translate([0, 0, 0.1])
+		hood_block(-HOOD_WALL_WIDTH);
 }
 
 // Model to play with.
@@ -237,6 +232,12 @@ module camera() {
 	translate([0, 0, image_plane])
 		polyhedron(points = [ [0, 0, 0], [-w, -h, d], [w, -h, d], [w, h, d], [-w, h, d] ],
 					faces = [ [ 0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 1], [1, 2, 3], [1, 3, 4] ]);
+}
+
+module cut_hood() {
+	translate([-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)])
+		rotate([0, 90, 0])
+			cylinder(h=2 * BRACKET_WIDTH, r=CUT_RADIUS);
 }
 
 module print_bracket() {
