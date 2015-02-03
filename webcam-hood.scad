@@ -161,7 +161,9 @@ module base(snap_adjust = 0) {
 }
 
 module hood_hole(radius_adjust = 0) {
-	translate([0, 0, -WALL_WIDTH - 0.1])
+	offset = [0, 0, -WALL_WIDTH - 0.1];
+	
+	translate(offset)
 		scale([HOOD_ASPECT, 1, 1])
 			cylinder(h=HOOD_HEIGHT, r1=HOOD_PROXIMAL_RADIUS + radius_adjust, r2=HOOD_DISTAL_RADIUS+radius_adjust);
 }
