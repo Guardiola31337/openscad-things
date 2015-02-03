@@ -207,7 +207,9 @@ module funnel_hood() {
 
 
 module hollow_top() {
-	translate([0, 0, 0.1])
+	offset = [0, 0, 0.1];
+	
+	translate(offset)
 		hood_block(-LENS_HOOD_WIDTH);
 }
 
