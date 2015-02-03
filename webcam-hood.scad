@@ -69,6 +69,7 @@ module mounted_hood() {
 }
 
 function adjust(dimension, adjustment_factor) = dimension - (2 * adjustment_factor);
+function adjust_up(dimension, adjustment_factor) = dimension + (2 * adjustment_factor);
 
 module plate(snap_adjust = 0) {
 	offset_z = SNAP_HEIGHT / 2;
@@ -137,7 +138,8 @@ module holes(snap_adjust = 0) {
 }
 
 module square(snap_adjust = 0) {
-	dimensions = [SQUARE_LENGHT + 2 * snap_adjust, SQUARE_WIDTH + 2 * snap_adjust, LEDGE_HEIGHT + 2];
+	lenght = adjust_up(SQUARE_LENGHT, snap_adjust);
+	dimensions = [lenght, SQUARE_WIDTH + 2 * snap_adjust, LEDGE_HEIGHT + 2];
 
 	cube(dimensions, center=true);
 }
