@@ -192,17 +192,19 @@ module lens_hood() {
 	}
 }
 
-// This is more or less a funnel. The curved_hood() below makes this looks a bit nicer.
+module hollow_hood() {
+	difference() {
+		hood_hole(0);
+		hood_hole(-HOOD_WALL_WIDTH);
+		translate([0, 0, 0.1])
+			hood_hole(-HOOD_WALL_WIDTH); // clean top cut.
+	}
+}
+
 module straight_hood() {
 	difference() {
-		difference() {
-			// This difference make it hollow.
-			hood_hole(0);
-			hood_hole(-HOOD_WALL_WIDTH);
-			translate([0, 0, 0.1])
-				hood_hole(-HOOD_WALL_WIDTH); // clean top cut.
-		}
-	camera(); // We're a bit below. Cut that flush wherever the camera is.
+		hollow_hood();
+		camera(); // We're a bit below. Cut that flush wherever the camera is.
 	}
 }
 
