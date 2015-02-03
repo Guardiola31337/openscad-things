@@ -60,11 +60,15 @@ module hood() {
 		mounted_hood();
 }
 
-module mounted_hood() {
+module hood_base() {
 	difference() {
 		base();
 		hood_block();
 	}
+}
+
+module mounted_hood() {
+	hood_base();
 	lens_hood();
 }
 
