@@ -196,12 +196,16 @@ module lens_hood() {
 	}
 }
 
+module hollow_top() {
+	translate([0, 0, 0.1])
+		hood_block(-HOOD_WALL_WIDTH);
+}
+
 module funnel_hood() {
 	difference() {
 		hood_block(0);
 		hood_block(-HOOD_WALL_WIDTH);
-		translate([0, 0, 0.1])
-			hood_block(-HOOD_WALL_WIDTH); // clean top cut.
+		hollow_top();
 	}
 }
 
