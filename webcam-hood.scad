@@ -196,7 +196,7 @@ module lens_hood() {
 	}
 }
 
-module hollow_hood() {
+module funnel_hood() {
 	difference() {
 		hood_block(0);
 		hood_block(-HOOD_WALL_WIDTH);
@@ -207,7 +207,7 @@ module hollow_hood() {
 
 module straight_hood() {
 	difference() {
-		hollow_hood();
+		funnel_hood();
 		camera(); // We're a bit below. Cut that flush wherever the camera is.
 	}
 }
