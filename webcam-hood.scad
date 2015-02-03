@@ -226,7 +226,7 @@ module central_block() {
 	offset = [0, 0, -12.5];
 
 	translate(offset)
-		cube(CAMERA_DIMENSIONS, center = true);
+		cube(CAMERA_DIMENSIONS, center = TRUE);
 }
 
 module right_block() {
