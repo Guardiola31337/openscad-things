@@ -43,6 +43,7 @@ HOOD_OFFSET = [0, OFFSET_Y, 0];
 TRUE = true;
 
 LYING = [0, 90, 0];
+RIGHT = [90, 0, 0];
 
 ARRAY_BASE_CORRECTION = -1;
 
@@ -233,7 +234,7 @@ module right_block() {
 	offset = [38, half(NEW_BRACKET_WIDTH), -16];
 	
 	translate(offset)
-		rotate([90, 0, 0])
+		rotate(RIGHT)
 			cylinder(h=BRACKET_HEIGHT, r=5);
 }
 
