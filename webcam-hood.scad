@@ -215,9 +215,7 @@ module hollow_top() {
 module camera() {
 	hull() {
 		central_block();
-		translate([38, BRACKET_HEIGHT/2, -16])
-			rotate([90, 0, 0])
-				cylinder(h=BRACKET_HEIGHT, r=5);
+		right_block();
 		translate([-38, BRACKET_HEIGHT/2, -16])
 			rotate([90, 0, 0])
 				cylinder(h=BRACKET_HEIGHT, r=5);
@@ -227,6 +225,12 @@ module camera() {
 module central_block() {
 	translate([0, 0, -12.5])
 		cube([60, BRACKET_HEIGHT, 25], center=true);
+}
+
+module right_block() {
+	translate([38, BRACKET_HEIGHT/2, -16])
+		rotate([90, 0, 0])
+			cylinder(h=BRACKET_HEIGHT, r=5);
 }
 
 module cut_hood() {
