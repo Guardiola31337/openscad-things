@@ -213,10 +213,6 @@ module hollow_top() {
 }
 
 module camera() {
-	body();
-}
-
-module body() {
 	hull() {
 		translate([0, 0, -12.5])
 			cube([60, BRACKET_HEIGHT, 25], center=true);
