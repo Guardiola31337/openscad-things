@@ -51,6 +51,7 @@ SQUARE_LENGHT = 2;
 SQUARE_WIDTH = 6;
 
 CAMERA_DIMENSIONS = [60, NEW_BRACKET_WIDTH, 25];
+CAMERA_EDGE_RADIUS = 5;
 
 module print() {
     hood();
@@ -235,7 +236,7 @@ module right_block() {
 	
 	translate(offset)
 		rotate(RIGHT)
-			cylinder(h = NEW_BRACKET_WIDTH, r = 5);
+			cylinder(h = NEW_BRACKET_WIDTH, r = CAMERA_EDGE_RADIUS);
 }
 
 module left_block() {
