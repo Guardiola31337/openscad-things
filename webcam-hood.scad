@@ -164,10 +164,11 @@ module hood_hole(radius_adjust = 0) {
 	offset = [0, 0, -LEDGE_HEIGHT - 0.1];
 	factors = [HOOD_ASPECT, 1, 1];
 	radius_bottom = HOOD_PROXIMAL_RADIUS + radius_adjust;
-	
+	radius_top = 	HOOD_DISTAL_RADIUS + radius_adjust;
+
 	translate(offset)
 		scale(factors)
-			cylinder(h = HOOD_HEIGHT, r1 = radius_bottom, r2 = HOOD_DISTAL_RADIUS + radius_adjust);
+			cylinder(h = HOOD_HEIGHT, r1 = radius_bottom, r2 = radius_top);
 }
 
 // Let's curve the top off a bit. We are mostly interested in blocking light from the top.
