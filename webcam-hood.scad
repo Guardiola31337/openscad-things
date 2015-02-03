@@ -221,7 +221,9 @@ module camera() {
 }
 
 module central_block() {
-	translate([0, 0, -12.5])
+	offset = [0, 0, -12.5];
+
+	translate(offset)
 		cube([60, BRACKET_HEIGHT, 25], center=true);
 }
 
