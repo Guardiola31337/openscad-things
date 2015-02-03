@@ -193,7 +193,7 @@ module lens_hood() {
 module straight_hood() {
 	difference() {
 		funnel_hood();
-		camera(); // We're a bit below. Cut that flush wherever the camera is.
+		camera();
 	}
 }
 
