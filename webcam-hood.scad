@@ -86,7 +86,7 @@ module base(snap_adjust = 0) {
 }
 
 module plate(snap_adjust = 0) {
-	offset_z = SNAP_HEIGHT / 2;
+	offset_z = half(SNAP_HEIGHT);
 	offset = [0, 0, offset_z];
 
 	lenght = adjust_down(HOOD_PLATE_LENGHT, snap_adjust);
