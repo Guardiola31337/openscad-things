@@ -48,6 +48,7 @@ LYING = [0, 90, 0];
 ARRAY_BASE_CORRECTION = -1;
 
 SQUARE_LENGHT = 2;
+SQUARE_WIDTH = 6;
 
 module print() {
     hood();
@@ -136,7 +137,7 @@ module holes(snap_adjust = 0) {
 }
 
 module square(snap_adjust = 0) {
-	dimensions = [SQUARE_LENGHT + 2 * snap_adjust, 6 + 2 * snap_adjust, 10];
+	dimensions = [SQUARE_LENGHT + 2 * snap_adjust, SQUARE_WIDTH + 2 * snap_adjust, 10];
 
 	cube(dimensions, center=true);
 }
