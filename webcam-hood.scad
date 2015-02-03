@@ -49,6 +49,8 @@ ARRAY_BASE_CORRECTION = -1;
 SQUARE_LENGHT = 2;
 SQUARE_WIDTH = 6;
 
+CAMERA_DIMENSIONS = [60, NEW_BRACKET_WIDTH, 25];
+
 module print() {
     hood();
     print_bracket();
@@ -224,7 +226,7 @@ module central_block() {
 	offset = [0, 0, -12.5];
 
 	translate(offset)
-		cube([60, BRACKET_HEIGHT, 25], center=true);
+		cube(CAMERA_DIMENSIONS, center = true);
 }
 
 module right_block() {
