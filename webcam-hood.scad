@@ -60,7 +60,7 @@ module hood() {
 module mounted_hood() {
 	difference() {
 		base();
-		hood_volume();  // Punch a hole.
+		hood_hole();
 	}
 	curved_hood();
 }
@@ -158,6 +158,12 @@ module base(snap_adjust = 0) {
 
 		squares(snap_adjust);
 	}
+}
+
+module hood_hole(radius_adjust = 0) {
+	translate([0, 0, -WALL_WIDTH - 0.1])
+		scale([HOOD_ASPECT, 1, 1])
+			cylinder(h=HOOD_HEIGHT, r1=HOOD_PROXIMAL_RADIUS + radius_adjust, r2=HOOD_DISTAL_RADIUS+radius_adjust);
 }
 
 // The solid shape of the hood.
