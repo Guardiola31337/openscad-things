@@ -161,7 +161,7 @@ module base(snap_adjust = 0) {
 }
 
 module hood_hole(radius_adjust = 0) {
-	offset = [0, 0, -WALL_WIDTH - 0.1];
+	offset = [0, 0, -LEDGE_HEIGHT - 0.1];
 	
 	translate(offset)
 		scale([HOOD_ASPECT, 1, 1])
