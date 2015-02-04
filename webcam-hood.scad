@@ -34,7 +34,7 @@ HOOD_PLATE_WIDTH = NEW_BRACKET_WIDTH - 2;
 
 HOLE_RADIUS = 2.5;
 
-CUT_RADIUS = 2 * HOOD_DISTAL_RADIUS;
+CUT_HOOD_RADIUS = 2 * HOOD_DISTAL_RADIUS;
 
 OFFSET_Y = BRACKET_HEIGHT/2 + WALL_WIDTH + 1;
 
@@ -248,11 +248,11 @@ module left_block() {
 }
 
 module cut_hood() {
-	offset = [-BRACKET_LENGHT, half(NEW_BRACKET_WIDTH), -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)];
+	offset = [-BRACKET_LENGHT, half(NEW_BRACKET_WIDTH), -(CUT_HOOD_RADIUS - HOOD_HEIGHT + WALL_WIDTH)];
 
 	translate(offset)
 		rotate([0, 90, 0])
-			cylinder(h=2 * BRACKET_WIDTH, r=CUT_RADIUS);
+			cylinder(h=2 * BRACKET_WIDTH, r=CUT_HOOD_RADIUS);
 }
 
 module print_bracket() {
