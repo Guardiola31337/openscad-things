@@ -55,7 +55,7 @@ CAMERA_EDGE_RADIUS = 5;
 
 module print() {
     hood();
-    print_bracket();
+    clip();
 }
 
 module hood() {
@@ -257,7 +257,7 @@ module cut_hood() {
 
 function double(dimension) = dimension * 2;
 
-module print_bracket() {
+module clip() {
 	// The hood needs to be turned around to be printed flat on its back.
 	rotate([180, 0, 0])
 		translate([0, OFFSET_Y, -WALL_WIDTH])
