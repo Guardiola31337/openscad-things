@@ -240,7 +240,9 @@ module right_block() {
 }
 
 module left_block() {
-	translate([-38, BRACKET_HEIGHT/2, -16])
+	offset = [-38, BRACKET_HEIGHT/2, -16];
+
+	translate(offset)
 		rotate([90, 0, 0])
 			cylinder(h=BRACKET_HEIGHT, r=5);
 }
