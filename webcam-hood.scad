@@ -100,7 +100,7 @@ module plate(snap_adjust = 0) {
 		cube(dimensions, center = TRUE);
 }
 
-function adjust_down(dimension, adjustment_factor) = dimension - (2 * adjustment_factor);
+function adjust_down(dimension, adjustment_factor) = dimension - double(adjustment_factor);
 function adjust_up(dimension, adjustment_factor) = dimension + (2 * adjustment_factor);
 
 module ledge() {
