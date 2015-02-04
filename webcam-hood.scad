@@ -205,12 +205,11 @@ module funnel_hood() {
 	difference() {
 		hood_block(0);
 		hood_block(-LENS_HOOD_WIDTH);
-		hollow_top();
+		hollow();
 	}
 }
 
-
-module hollow_top() {
+module hollow() {
 	offset = [0, 0, 0.1];
 	
 	translate(offset)
