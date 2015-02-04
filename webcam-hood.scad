@@ -251,7 +251,7 @@ module cut_hood() {
 	offset = [-BRACKET_LENGHT, half(NEW_BRACKET_WIDTH), -(CUT_HOOD_RADIUS - HOOD_HEIGHT + LEDGE_HEIGHT)];
 
 	translate(offset)
-		rotate([0, 90, 0])
+		rotate(LYING)
 			cylinder(h=2 * BRACKET_WIDTH, r=CUT_HOOD_RADIUS);
 }
 
