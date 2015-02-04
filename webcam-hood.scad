@@ -263,10 +263,10 @@ module clip() {
 
 	rotate(TURN)
 		translate(offset)
-			clickable_bracket();
+			clip_bracket();
 }
 
-module clickable_bracket() {
+module clip_bracket() {
 	difference() {
 		bracket();
 		base(-SNAP_FIT_GAP);
@@ -315,7 +315,7 @@ print();
 
 module complete_mount() {
 	color("red")
-		clickable_bracket();
+		clip_bracket();
 	mounted_hood();
 	%camera();
 }
@@ -326,12 +326,13 @@ module mounting_animation() {
 	if ($t < 0.5) {
 		assign(scene_t = 2 * (0.5 - $t)) {  // 1..0
 			translate([0, scene_t * (BRACKET_HEIGHT + 5), scene_t * HOOD_HEIGHT/5 + (BRACKET_DEPTH + WALL_WIDTH/2)])
-				rotate([scene_t * 20, 0, 0]) clickable_bracket();
+				rotate([scene_t * 20, 0, 0])
+					clip_bracket();
 		}
 	} else {
 		assign(scene_t = 1 - 2 * ($t - 0.5)) {  // 1..0
 			translate([0, 0, scene_t * (BRACKET_DEPTH + WALL_WIDTH/2)])
-				clickable_bracket();
+				clip_bracket();
 		}
 	}
 	color("lightgreen")
