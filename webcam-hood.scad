@@ -248,7 +248,7 @@ module left_block() {
 }
 
 module cut_hood() {
-	offset = [-BRACKET_LENGHT, NEW_BRACKET_WIDTH/2, -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)];
+	offset = [-BRACKET_LENGHT, half(NEW_BRACKET_WIDTH), -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)];
 
 	translate(offset)
 		rotate([0, 90, 0])
