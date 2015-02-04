@@ -252,7 +252,7 @@ module cut_hood() {
 
 	translate(offset)
 		rotate(LYING)
-			cylinder(h=2 * BRACKET_WIDTH, r=CUT_HOOD_RADIUS);
+			cylinder(h = 2 * BRACKET_LENGHT, r = CUT_HOOD_RADIUS);
 }
 
 module print_bracket() {
