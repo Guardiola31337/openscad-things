@@ -259,8 +259,10 @@ module cut_hood() {
 function double(dimension) = dimension * 2;
 
 module clip() {
+	offset = [0, OFFSET_Y, -WALL_WIDTH];	
+
 	rotate(TURN)
-		translate([0, OFFSET_Y, -WALL_WIDTH])
+		translate(offset)
 			clickable_bracket();
 }
 
