@@ -272,18 +272,10 @@ module clip_bracket() {
 	}
 }
 
-module punch() {
-	offset = [0, 0, -0.1];
-
-	base(-SNAP_FIT_GAP);
-	translate(offset)
-		base(-SNAP_FIT_GAP);
-}
-
 // Mounting bracket, that has some space in the front to ease mounting.
 module bracket() {
 	difference() {
-		base_bracket();
+		bracket_base();
 		// Punch out the access area.
 		translate([0, -BRACKET_HEIGHT/2, 0])
 			cube([MOUNTING_SPACE + 2 * SNAP_FIT_GAP, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
@@ -292,7 +284,7 @@ module bracket() {
 	}
 }
 
-module base_bracket() {
+module bracket_base() {
     // The body.
     translate([0, 0, WALL_WIDTH/2]) cube([BRACKET_WIDTH, BRACKET_HEIGHT + WALL_WIDTH, WALL_WIDTH], center=true);
     // 'knee'
@@ -312,6 +304,14 @@ module base_bracket() {
       rotate([BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
            cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
+}
+
+module punch() {
+	offset = [0, 0, -0.1];
+
+	base(-SNAP_FIT_GAP);
+	translate(offset)
+		base(-SNAP_FIT_GAP);
 }
 
 //complete_mount();
