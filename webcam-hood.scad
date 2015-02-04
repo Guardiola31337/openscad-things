@@ -36,7 +36,7 @@ HOLE_RADIUS = 2.5;
 
 CUT_HOOD_RADIUS = 2 * HOOD_DISTAL_RADIUS;
 
-OFFSET_Y = NEW_BRACKET_WIDTH/2 + WALL_WIDTH + 1;
+OFFSET_Y = NEW_BRACKET_WIDTH/2 + LEDGE_HEIGHT + 1;
 
 HOOD_OFFSET = [0, OFFSET_Y, 0];
 
@@ -259,7 +259,7 @@ module cut_hood() {
 function double(dimension) = dimension * 2;
 
 module clip() {
-	offset = [0, OFFSET_Y, -WALL_WIDTH];	
+	offset = [0, OFFSET_Y, -LEDGE_HEIGHT];	
 
 	rotate(TURN)
 		translate(offset)
