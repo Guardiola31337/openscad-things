@@ -268,10 +268,14 @@ module clip() {
 module clip_bracket() {
 	difference() {
 		bracket();
-		base(-SNAP_FIT_GAP);
-		translate([0, 0, -0.1])
-			base(-SNAP_FIT_GAP); // properly punch
+		punch();
 	}
+}
+
+module punch() {
+	base(-SNAP_FIT_GAP);
+		translate([0, 0, -0.1])
+			base(-SNAP_FIT_GAP);
 }
 
 // Mounting bracket, that has some space in the front to ease mounting.
