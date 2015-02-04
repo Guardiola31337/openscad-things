@@ -252,8 +252,10 @@ module cut_hood() {
 
 	translate(offset)
 		rotate(LYING)
-			cylinder(h = 2 * BRACKET_LENGHT, r = CUT_HOOD_RADIUS);
+			cylinder(h = double(BRACKET_LENGHT), r = CUT_HOOD_RADIUS);
 }
+
+function double(dimension) = dimension * 2;
 
 module print_bracket() {
 	// The hood needs to be turned around to be printed flat on its back.
