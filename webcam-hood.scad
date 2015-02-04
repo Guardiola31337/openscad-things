@@ -248,7 +248,9 @@ module left_block() {
 }
 
 module cut_hood() {
-	translate([-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)])
+	offset = [-BRACKET_WIDTH, BRACKET_HEIGHT/2, -(CUT_RADIUS-HOOD_HEIGHT+WALL_WIDTH)];
+
+	translate(offset)
 		rotate([0, 90, 0])
 			cylinder(h=2 * BRACKET_WIDTH, r=CUT_RADIUS);
 }
