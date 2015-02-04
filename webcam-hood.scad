@@ -244,7 +244,7 @@ module left_block() {
 
 	translate(offset)
 		rotate(RIGHT)
-			cylinder(h = NEW_BRACKET_WIDTH, r = 5);
+			cylinder(h = NEW_BRACKET_WIDTH, r = CAMERA_EDGE_RADIUS);
 }
 
 module cut_hood() {
