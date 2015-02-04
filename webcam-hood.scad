@@ -240,7 +240,7 @@ module right_block() {
 }
 
 module left_block() {
-	offset = [-38, NEW_BRACKET_WIDTH/2, -16];
+	offset = [-38, half(NEW_BRACKET_WIDTH), -16];
 
 	translate(offset)
 		rotate([90, 0, 0])
