@@ -44,6 +44,7 @@ TRUE = true;
 
 LYING = [0, 90, 0];
 RIGHT = [90, 0, 0];
+TURN = [180, 0, 0];
 
 ARRAY_BASE_CORRECTION = -1;
 
@@ -258,8 +259,7 @@ module cut_hood() {
 function double(dimension) = dimension * 2;
 
 module clip() {
-	// The hood needs to be turned around to be printed flat on its back.
-	rotate([180, 0, 0])
+	rotate(TURN)
 		translate([0, OFFSET_Y, -WALL_WIDTH])
 			clickable_bracket();
 }
