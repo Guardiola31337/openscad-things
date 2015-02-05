@@ -295,7 +295,6 @@ module body() {
 
 module hooks() {
     top_hook();
-	bottom_hook();
 }
 
 module top_hook() {
@@ -328,14 +327,6 @@ module hook_block(position, angle) {
       rotate(coordinates)
         translate(vertical_offset)
           cube(dimensions, center = TRUE);
-}
-
-module bottom_hook() {
-	position = -half(NEW_BRACKET_WIDTH) - half(LEDGE_HEIGHT);
-	angle = BRACKET_ANGLE;
-
-	edge_block(position);
-    hook_block(position, angle);
 }
 
 module punch() {
