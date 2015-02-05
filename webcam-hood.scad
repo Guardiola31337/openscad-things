@@ -306,7 +306,7 @@ module body() {
 	dimensions = [BRACKET_LENGHT, NEW_BRACKET_WIDTH + LEDGE_HEIGHT, LEDGE_HEIGHT];
 
     translate(offset)
-		cube(dimensions, center=true);
+		cube(dimensions, center = TRUE);
 }
 
 module punch() {
