@@ -302,7 +302,7 @@ module top_hook() {
 	position = half(NEW_BRACKET_WIDTH) + half(LEDGE_HEIGHT);
 
 	edge_block(position);
-	hook_block();
+	new_hook_block(position);
 }
 
 module edge_block(position) {
@@ -313,8 +313,8 @@ module edge_block(position) {
         cylinder(h = BRACKET_LENGHT, r = radius(LEDGE_HEIGHT));
 }
 
-module hook_block() {
-	translate([0, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
+module new_hook_block(position) {
+	translate([0, position, WALL_WIDTH/2])
       rotate([-BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
           cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
