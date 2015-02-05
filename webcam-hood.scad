@@ -294,10 +294,6 @@ module body() {
 }
 
 module hooks() {
-    top_hook();
-}
-
-module top_hook() {
 	positions = [half(NEW_BRACKET_WIDTH) + half(LEDGE_HEIGHT), -half(NEW_BRACKET_WIDTH) - half(LEDGE_HEIGHT)];
 	angles = [-BRACKET_ANGLE, BRACKET_ANGLE];
 
