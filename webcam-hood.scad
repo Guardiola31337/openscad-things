@@ -315,11 +315,11 @@ module edge_block(position) {
 }
 
 module hook_block(position, angle) {
-	offset = [0, position, half(LEDGE_HEIGHT)];
+	horizontal_offset = [0, position, half(LEDGE_HEIGHT)];
 
 	coordinates = [angle, 0, 0];
 
-	translate(offset)
+	translate(horizontal_offset)
       rotate(coordinates)
         translate([0, 0, -BRACKET_DEPTH/2])
           cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
