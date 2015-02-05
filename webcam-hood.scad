@@ -267,15 +267,10 @@ module clip_bracket() {
 	}
 }
 
-// Mounting bracket, that has some space in the front to ease mounting.
 module bracket() {
 	difference() {
 		bracket_base();
-		// Punch out the access area.
-		translate([0, -BRACKET_HEIGHT/2, 0])
-			cube([MOUNTING_SPACE + 2 * SNAP_FIT_GAP, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
-		scale([1, 1/HOOD_ASPECT, 1])
-			cylinder(r=MOUNTING_SPACE/2 + SNAP_FIT_GAP, h=3 * WALL_WIDTH, center=true);
+		bracket_ledge_space();
 	}
 }
 
@@ -323,6 +318,14 @@ module hook_block(position, angle) {
       rotate(coordinates)
         translate(vertical_offset)
           cube(dimensions, center = TRUE);
+}
+
+module bracket_ledge_space() {
+	// Punch out the access area.
+	translate([0, -BRACKET_HEIGHT/2, 0])
+		cube([MOUNTING_SPACE + 2 * SNAP_FIT_GAP, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
+	scale([1, 1/HOOD_ASPECT, 1])
+		cylinder(r=MOUNTING_SPACE/2 + SNAP_FIT_GAP, h=3 * WALL_WIDTH, center=true);
 }
 
 module punch() {
