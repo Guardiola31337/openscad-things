@@ -294,13 +294,7 @@ module body() {
 }
 
 module hooks() {
-    translate([-BRACKET_WIDTH/2, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
-      rotate([0, 90, 0])
-        cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
-    translate([0, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
-      rotate([-BRACKET_ANGLE, 0, 0])
-        translate([0, 0, -BRACKET_DEPTH/2])
-          cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
+    top_hook();
 
     translate([-BRACKET_WIDTH/2, -BRACKET_HEIGHT/2-WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
@@ -309,6 +303,17 @@ module hooks() {
       rotate([BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
            cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
+}
+
+module top_hook() {
+	translate([-BRACKET_WIDTH/2, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
+      rotate([0, 90, 0])
+        cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
+
+    translate([0, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
+      rotate([-BRACKET_ANGLE, 0, 0])
+        translate([0, 0, -BRACKET_DEPTH/2])
+          cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
 }
 
 module punch() {
