@@ -299,12 +299,14 @@ module hooks() {
 }
 
 module top_hook() {
-	edge_rounded();
+	position = BRACKET_HEIGHT / 2 + WALL_WIDTH / 2;
+
+	edge_rounded(position);
 	hook_block();
 }
 
-module edge_rounded() {
-	translate([-BRACKET_WIDTH/2, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
+module edge_rounded(position) {
+	translate([-BRACKET_WIDTH/2, position, WALL_WIDTH/2])
       rotate([0, 90, 0])
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
 }
