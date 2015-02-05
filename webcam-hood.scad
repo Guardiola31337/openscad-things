@@ -280,8 +280,7 @@ module bracket() {
 }
 
 module bracket_base() {
-    // The body.
-    translate([0, 0, WALL_WIDTH/2]) cube([BRACKET_WIDTH, BRACKET_HEIGHT + WALL_WIDTH, WALL_WIDTH], center=true);
+    body();
     // 'knee'
     translate([-BRACKET_WIDTH/2, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
@@ -299,6 +298,11 @@ module bracket_base() {
       rotate([BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
            cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
+}
+
+module body() {
+    translate([0, 0, WALL_WIDTH/2])
+		cube([BRACKET_WIDTH, BRACKET_HEIGHT + WALL_WIDTH, WALL_WIDTH], center=true);
 }
 
 module punch() {
