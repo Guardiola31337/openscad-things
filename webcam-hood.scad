@@ -322,7 +322,7 @@ module hook_block(position, angle) {
 
 module bracket_ledge_space() {
 	punch_ledge_base();
-	punch_hood_area();
+	punch_ledge_rounded();
 }
 
 module punch_ledge_base() {
@@ -330,7 +330,7 @@ module punch_ledge_base() {
 		cube([MOUNTING_SPACE + 2 * SNAP_FIT_GAP, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
 }
 
-module punch_hood_area() {
+module punch_ledge_rounded() {
 	scale([1, 1/HOOD_ASPECT, 1])
 		cylinder(r=MOUNTING_SPACE/2 + SNAP_FIT_GAP, h=3 * WALL_WIDTH, center=true);
 }
