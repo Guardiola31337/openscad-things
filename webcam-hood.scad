@@ -300,9 +300,12 @@ module hooks() {
 
 module top_hook() {
 	position = half(NEW_BRACKET_WIDTH) + half(LEDGE_HEIGHT);
+	positions = [half(NEW_BRACKET_WIDTH) + half(LEDGE_HEIGHT), -half(NEW_BRACKET_WIDTH) - half(LEDGE_HEIGHT)];
 	angle = -BRACKET_ANGLE;
 
-	edge_block(position);
+	for(i = [0 : 1]) {
+		edge_block(positions[i]);
+	}
 	hook_block(position, angle);
 }
 
