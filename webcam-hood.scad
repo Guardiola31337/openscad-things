@@ -315,7 +315,7 @@ module edge_block(position) {
 }
 
 module hook_block(position, angle) {
-	offset = [0, position, WALL_WIDTH / 2];
+	offset = [0, position, LEDGE_HEIGHT / 2];
 
 	translate(offset)
       rotate([angle, 0, 0])
