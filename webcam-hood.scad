@@ -300,6 +300,7 @@ module hooks() {
 
 module top_hook() {
 	position = half(NEW_BRACKET_WIDTH) + half(LEDGE_HEIGHT);
+	angle = -BRACKET_ANGLE;
 
 	edge_block(position);
 	hook_block(position, angle);
@@ -314,8 +315,6 @@ module edge_block(position) {
 }
 
 module hook_block(position, angle) {
-	angle = -BRACKET_ANGLE;
-
 	translate([0, position, WALL_WIDTH/2])
       rotate([angle, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
