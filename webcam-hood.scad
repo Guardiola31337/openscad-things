@@ -299,7 +299,7 @@ module hooks() {
 }
 
 module top_hook() {
-	position = NEW_BRACKET_WIDTH / 2 + WALL_WIDTH / 2;
+	position = NEW_BRACKET_WIDTH / 2 + LEDGE_HEIGHT / 2;
 
 	edge_block(position);
 	hook_block();
