@@ -329,7 +329,7 @@ module hook_block(position, angle) {
 }
 
 module bottom_hook() {
-	position = -half(BRACKET_HEIGHT) - half(WALL_WIDTH);
+	position = -half(NEW_BRACKET_WIDTH) - half(WALL_WIDTH);
 	angle = BRACKET_ANGLE;
 
 	edge_block(position);
