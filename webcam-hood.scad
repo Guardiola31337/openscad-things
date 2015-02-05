@@ -281,11 +281,22 @@ module bracket() {
 
 module bracket_base() {
     body();
-    // 'knee'
+    hooks();
+}
+
+module body() {
+	offset = [0, 0, half(LEDGE_HEIGHT)];
+
+	dimensions = [BRACKET_LENGHT, NEW_BRACKET_WIDTH + LEDGE_HEIGHT, LEDGE_HEIGHT];
+
+    translate(offset)
+		cube(dimensions, center = TRUE);
+}
+
+module hooks() {
     translate([-BRACKET_WIDTH/2, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([0, 90, 0])
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
-
     translate([0, BRACKET_HEIGHT/2+WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([-BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
@@ -298,15 +309,6 @@ module bracket_base() {
       rotate([BRACKET_ANGLE, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
            cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
-}
-
-module body() {
-	offset = [0, 0, half(LEDGE_HEIGHT)];
-
-	dimensions = [BRACKET_LENGHT, NEW_BRACKET_WIDTH + LEDGE_HEIGHT, LEDGE_HEIGHT];
-
-    translate(offset)
-		cube(dimensions, center = TRUE);
 }
 
 module punch() {
