@@ -306,7 +306,9 @@ module top_hook() {
 }
 
 module edge_block(position) {
-	translate([-BRACKET_WIDTH/2, position, WALL_WIDTH/2])
+	offset = [-BRACKET_WIDTH/2, position, WALL_WIDTH/2];
+
+	translate(offset)
       rotate([0, 90, 0])
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
 }
