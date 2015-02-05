@@ -316,7 +316,7 @@ module edge_block(position) {
 
 module hook_block(position, angle) {
 	horizontal_offset = [0, position, half(LEDGE_HEIGHT)];
-	vertical_offset = [0, 0, -BRACKET_DEPTH / 2];
+	vertical_offset = [0, 0, -half(BRACKET_DEPTH)];
 
 	coordinates = [angle, 0, 0];
 
