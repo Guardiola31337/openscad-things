@@ -329,9 +329,9 @@ module hook_block(position, angle) {
 }
 
 module bottom_hook() {
-	translate([-BRACKET_WIDTH/2, -BRACKET_HEIGHT/2-WALL_WIDTH/2, WALL_WIDTH/2])
-      rotate([0, 90, 0])
-        cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
+	position = -BRACKET_HEIGHT / 2 - WALL_WIDTH / 2;
+
+	edge_block(position);
     
 	translate([0, -BRACKET_HEIGHT/2-WALL_WIDTH/2, WALL_WIDTH/2])
       rotate([BRACKET_ANGLE, 0, 0])
