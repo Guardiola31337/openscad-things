@@ -301,7 +301,9 @@ module bracket_base() {
 }
 
 module body() {
-    translate([0, 0, WALL_WIDTH/2])
+	offset = [0, 0, WALL_WIDTH/2];
+
+    translate(offset)
 		cube([BRACKET_WIDTH, BRACKET_HEIGHT + WALL_WIDTH, WALL_WIDTH], center=true);
 }
 
