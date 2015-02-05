@@ -330,13 +330,10 @@ module hook_block(position, angle) {
 
 module bottom_hook() {
 	position = -BRACKET_HEIGHT / 2 - WALL_WIDTH / 2;
+	angle = BRACKET_ANGLE;
 
 	edge_block(position);
-    
-	translate([0, -BRACKET_HEIGHT/2-WALL_WIDTH/2, WALL_WIDTH/2])
-      rotate([BRACKET_ANGLE, 0, 0])
-        translate([0, 0, -BRACKET_DEPTH/2])
-           cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
+    hook_block(position, angle);
 }
 
 module punch() {
