@@ -315,7 +315,9 @@ module edge_block(position) {
 }
 
 module hook_block(position, angle) {
-	translate([0, position, WALL_WIDTH/2])
+	offset = [0, position, WALL_WIDTH / 2];
+
+	translate(offset)
       rotate([angle, 0, 0])
         translate([0, 0, -BRACKET_DEPTH/2])
           cube([BRACKET_WIDTH, WALL_WIDTH, BRACKET_DEPTH], center=true);
