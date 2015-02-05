@@ -306,7 +306,7 @@ module top_hook() {
 }
 
 module edge_block(position) {
-	offset = [-BRACKET_LENGHT / 2, position, LEDGE_HEIGHT / 2];
+	offset = [-half(BRACKET_LENGHT), position, half(LEDGE_HEIGHT)];
 
 	translate(offset)
       rotate([0, 90, 0])
