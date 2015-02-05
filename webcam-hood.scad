@@ -309,7 +309,7 @@ module edge_block(position) {
 	offset = [-half(BRACKET_LENGHT), position, half(LEDGE_HEIGHT)];
 
 	translate(offset)
-      rotate([0, 90, 0])
+      rotate(LYING)
         cylinder(h=BRACKET_WIDTH, r=WALL_WIDTH/2);
 }
 
