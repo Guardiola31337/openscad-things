@@ -303,7 +303,7 @@ module bracket_base() {
 module body() {
 	offset = [0, 0, half(LEDGE_HEIGHT)];
 
-	dimensions = [BRACKET_WIDTH, BRACKET_HEIGHT + WALL_WIDTH, WALL_WIDTH];
+	dimensions = [BRACKET_LENGHT, BRACKET_HEIGHT + WALL_WIDTH, WALL_WIDTH];
 
     translate(offset)
 		cube(dimensions, center=true);
