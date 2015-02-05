@@ -325,7 +325,7 @@ module hook_block(position, angle) {
 	translate(horizontal_offset)
       rotate(coordinates)
         translate(vertical_offset)
-          cube(dimensions, center=true);
+          cube(dimensions, center = TRUE);
 }
 
 module bottom_hook() {
