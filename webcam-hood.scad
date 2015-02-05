@@ -310,7 +310,7 @@ module edge_block(position) {
 
 	translate(offset)
       rotate(LYING)
-        cylinder(h = BRACKET_LENGHT, r = LEDGE_HEIGHT/2);
+        cylinder(h = BRACKET_LENGHT, r = radius(LEDGE_HEIGHT));
 }
 
 module hook_block() {
