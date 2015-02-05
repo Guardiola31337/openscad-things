@@ -320,7 +320,7 @@ module hook_block(position, angle) {
 
 	coordinates = [angle, 0, 0];
 
-	dimensions = [BRACKET_LENGHT, WALL_WIDTH, BRACKET_DEPTH];
+	dimensions = [BRACKET_LENGHT, LEDGE_HEIGHT, BRACKET_DEPTH];
 
 	translate(horizontal_offset)
       rotate(coordinates)
