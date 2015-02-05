@@ -180,7 +180,7 @@ module hood_block(radius_adjust = 0) {
 	offset = [0, 0, -LEDGE_HEIGHT - 0.1];
 	factors = [HOOD_ASPECT, 1, 1];
 	radius_bottom = HOOD_PROXIMAL_RADIUS + radius_adjust;
-	radius_top = 	HOOD_DISTAL_RADIUS + radius_adjust;
+	radius_top = HOOD_DISTAL_RADIUS + radius_adjust;
 
 	translate(offset)
 		scale(factors)
@@ -217,10 +217,13 @@ module hollow() {
 }
 
 module camera() {
+	right_side = 38;
+	left_side = -38;
+
 	hull() {
 		central_block();
-		right_block();
-		left_block();
+		lateral_block(right_side);
+		lateral_block(left_side);
 	}
 }
 
@@ -231,16 +234,8 @@ module central_block() {
 		cube(CAMERA_DIMENSIONS, center = TRUE);
 }
 
-module right_block() {
-	offset = [38, half(NEW_BRACKET_WIDTH), -16];
-	
-	translate(offset)
-		rotate(RIGHT)
-			cylinder(h = NEW_BRACKET_WIDTH, r = CAMERA_EDGE_RADIUS);
-}
-
-module left_block() {
-	offset = [-38, half(NEW_BRACKET_WIDTH), -16];
+module lateral_block(side) {
+	offset = [side, half(NEW_BRACKET_WIDTH), -16];
 
 	translate(offset)
 		rotate(RIGHT)
