@@ -321,12 +321,12 @@ module hook_block(position, angle) {
 }
 
 module bracket_ledge_space() {
-	punch_access();
+	punch_access_area();
 	scale([1, 1/HOOD_ASPECT, 1])
 		cylinder(r=MOUNTING_SPACE/2 + SNAP_FIT_GAP, h=3 * WALL_WIDTH, center=true);
 }
 
-module punch_access() {
+module punch_access_area() {
 	translate([0, -BRACKET_HEIGHT/2, 0])
 		cube([MOUNTING_SPACE + 2 * SNAP_FIT_GAP, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
 }
