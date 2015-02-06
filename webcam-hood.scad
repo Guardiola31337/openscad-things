@@ -8,13 +8,13 @@ LENS_HOOD_WIDTH = 0.6;
 
 BRACKET_DEPTH = 5 + LEDGE_HEIGHT / 2;
 BRACKET_LENGHT = 48;
-NEW_BRACKET_WIDTH = 29.5;
+BRACKET_WIDTH = 29.5;
 BRACKET_ANGLE = 4.7;
 
 HOOD_HEIGHT = 25;
 HOOD_ASPECT = 1920/1080;
 HOOD_PROXIMAL_RADIUS = 4.5;
-HOOD_DISTAL_RADIUS = NEW_BRACKET_WIDTH * 0.65;
+HOOD_DISTAL_RADIUS = BRACKET_WIDTH * 0.65;
 
 SNAP_FIT_GAP = 0.25;
 SNAP_HEIGHT = LEDGE_HEIGHT / 2;
@@ -26,13 +26,13 @@ IMAGE_WIDTH_INCLINATION = IMAGE_WIDTH / IMAGE_DISTANCE;
 MOUNTING_MARGIN = IMAGE_WIDTH_INCLINATION * BRACKET_DEPTH;
 LEDGE_LENGHT = 2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + LEDGE_HEIGHT * IMAGE_WIDTH_INCLINATION) + 2 * MOUNTING_MARGIN;
 HOOD_PLATE_LENGHT = BRACKET_LENGHT - 2;
-HOOD_PLATE_WIDTH = NEW_BRACKET_WIDTH - 2;
+HOOD_PLATE_WIDTH = BRACKET_WIDTH - 2;
 
 HOLE_RADIUS = 2.5;
 
 CUT_HOOD_RADIUS = 2 * HOOD_DISTAL_RADIUS;
 
-OFFSET_Y = NEW_BRACKET_WIDTH/2 + LEDGE_HEIGHT + 1;
+OFFSET_Y = BRACKET_WIDTH/2 + LEDGE_HEIGHT + 1;
 
 HOOD_OFFSET = [0, OFFSET_Y, 0];
 
@@ -47,7 +47,7 @@ ARRAY_BASE_CORRECTION = -1;
 SQUARE_LENGHT = 2;
 SQUARE_WIDTH = 6;
 
-CAMERA_DIMENSIONS = [60, NEW_BRACKET_WIDTH, 25];
+CAMERA_DIMENSIONS = [60, BRACKET_WIDTH, 25];
 CAMERA_EDGE_RADIUS = 5;
 
 module print() {
@@ -107,10 +107,10 @@ module ledge() {
 }
 
 module ledge_base() {
-	offset_y = -NEW_BRACKET_WIDTH / 4;
+	offset_y = -BRACKET_WIDTH / 4;
 	offset = [0, offset_y, SNAP_HEIGHT];
 
-	width = half(NEW_BRACKET_WIDTH) + LEDGE_HEIGHT;
+	width = half(BRACKET_WIDTH) + LEDGE_HEIGHT;
 	dimensions = [LEDGE_LENGHT, width, LEDGE_HEIGHT];
 
 	translate(offset)
@@ -130,7 +130,7 @@ function radius(diameter) = half(diameter);
 
 module ledge_front() {
 	offset_x = half(-LEDGE_LENGHT);
-	offset_y = half(-(NEW_BRACKET_WIDTH + LEDGE_HEIGHT));
+	offset_y = half(-(BRACKET_WIDTH + LEDGE_HEIGHT));
 	offset = [offset_x, offset_y, radius(LEDGE_HEIGHT)];
 
 	translate(offset)
@@ -231,15 +231,15 @@ module central_block() {
 }
 
 module lateral_block(side) {
-	offset = [side, half(NEW_BRACKET_WIDTH), -16];
+	offset = [side, half(BRACKET_WIDTH), -16];
 
 	translate(offset)
 		rotate(RIGHT)
-			cylinder(h = NEW_BRACKET_WIDTH, r = CAMERA_EDGE_RADIUS);
+			cylinder(h = BRACKET_WIDTH, r = CAMERA_EDGE_RADIUS);
 }
 
 module cut_hood() {
-	offset = [-BRACKET_LENGHT, half(NEW_BRACKET_WIDTH), -(CUT_HOOD_RADIUS - HOOD_HEIGHT + LEDGE_HEIGHT)];
+	offset = [-BRACKET_LENGHT, half(BRACKET_WIDTH), -(CUT_HOOD_RADIUS - HOOD_HEIGHT + LEDGE_HEIGHT)];
 
 	translate(offset)
 		rotate(LYING)
@@ -278,14 +278,14 @@ module bracket_base() {
 module body() {
 	offset = [0, 0, half(LEDGE_HEIGHT)];
 
-	dimensions = [BRACKET_LENGHT, NEW_BRACKET_WIDTH + LEDGE_HEIGHT, LEDGE_HEIGHT];
+	dimensions = [BRACKET_LENGHT, BRACKET_WIDTH + LEDGE_HEIGHT, LEDGE_HEIGHT];
 
     translate(offset)
 		cube(dimensions, center = TRUE);
 }
 
 module hooks() {
-	positions = [half(NEW_BRACKET_WIDTH) + half(LEDGE_HEIGHT), -half(NEW_BRACKET_WIDTH) - half(LEDGE_HEIGHT)];
+	positions = [half(BRACKET_WIDTH) + half(LEDGE_HEIGHT), -half(BRACKET_WIDTH) - half(LEDGE_HEIGHT)];
 	angles = [-BRACKET_ANGLE, BRACKET_ANGLE];
 
 	for(i = [0 : 1]) {
@@ -322,11 +322,11 @@ module bracket_ledge_space() {
 }
 
 module punch_ledge_base() {
-	offset = [0, -half(NEW_BRACKET_WIDTH), 0];
+	offset = [0, -half(BRACKET_WIDTH), 0];
 
 	lenght = LEDGE_LENGHT + 2 * SNAP_FIT_GAP;
 	height = 2 * BRACKET_DEPTH;
-	dimensions = [lenght, NEW_BRACKET_WIDTH, height];
+	dimensions = [lenght, BRACKET_WIDTH, height];
 
 	translate(offset)
 		cube(dimensions, center = TRUE);
