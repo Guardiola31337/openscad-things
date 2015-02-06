@@ -339,7 +339,7 @@ module punch_ledge_rounded() {
 	axis_y = 1 / HOOD_ASPECT;
 	factors = [1, axis_y, 1];
 
-	radius = LEDGE_LENGHT / 2 + SNAP_FIT_GAP;
+	radius = half(LEDGE_LENGHT) + SNAP_FIT_GAP;
 
 	scale(factors)
 		cylinder(r = radius, h=3 * WALL_WIDTH, center=true);
