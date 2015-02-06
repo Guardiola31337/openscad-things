@@ -1,13 +1,12 @@
 // Little hood for the Logitec C920 webcam.
 // (c) h.zeller@acm.org Creative Commons license BY-SA
 
-$fn=128;
+$fn = 128;
 
 LEDGE_HEIGHT = 2.3;
 LENS_HOOD_WIDTH = 0.6;
 
-BRACKET_DEPTH = 5 + LEDGE_HEIGHT/2;
-BRACKET_WIDTH = 48;
+BRACKET_DEPTH = 5 + LEDGE_HEIGHT / 2;
 BRACKET_LENGHT = 48;
 BRACKET_HEIGHT = 29.5;
 NEW_BRACKET_WIDTH = 29.5;
