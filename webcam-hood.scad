@@ -15,7 +15,7 @@ BRACKET_ANGLE = 4.7;
 HOOD_HEIGHT = 25;
 HOOD_ASPECT = 1920/1080;
 HOOD_PROXIMAL_RADIUS = 4.5;
-HOOD_DISTAL_RADIUS = BRACKET_HEIGHT * 0.65;
+HOOD_DISTAL_RADIUS = NEW_BRACKET_WIDTH * 0.65;
 
 SNAP_FIT_GAP = 0.25;
 SNAP_HEIGHT = LEDGE_HEIGHT / 2;
@@ -327,7 +327,7 @@ module punch_ledge_base() {
 
 	lenght = LEDGE_LENGHT + 2 * SNAP_FIT_GAP;
 	height = 2 * BRACKET_DEPTH;
-	dimensions = [lenght, BRACKET_HEIGHT, height];
+	dimensions = [lenght, NEW_BRACKET_WIDTH, height];
 
 	translate(offset)
 		cube(dimensions, center = TRUE);
