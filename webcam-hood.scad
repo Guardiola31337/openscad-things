@@ -333,7 +333,7 @@ module punch_ledge_base() {
 	dimensions = [lenght, BRACKET_HEIGHT, height];
 
 	translate(offset)
-		cube(dimensions, center=true);
+		cube(dimensions, center = TRUE);
 }
 
 module punch_ledge_rounded() {
