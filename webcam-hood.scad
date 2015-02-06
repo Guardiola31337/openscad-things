@@ -337,7 +337,8 @@ module punch_ledge_base() {
 }
 
 module punch_ledge_rounded() {
-	factors = [1, 1/HOOD_ASPECT, 1];
+	axis_y = 1 / HOOD_ASPECT;
+	factors = [1, axis_y, 1];
 
 	scale(factors)
 		cylinder(r=MOUNTING_SPACE/2 + SNAP_FIT_GAP, h=3 * WALL_WIDTH, center=true);
