@@ -329,7 +329,8 @@ module punch_ledge_base() {
 	offset = [0, -half(NEW_BRACKET_WIDTH), 0];
 
 	lenght = MOUNTING_SPACE + 2 * SNAP_FIT_GAP;
-	dimensions = [lenght, BRACKET_HEIGHT, 2 * BRACKET_DEPTH];
+	height = 2 * BRACKET_DEPTH;
+	dimensions = [lenght, BRACKET_HEIGHT, height];
 
 	translate(offset)
 		cube(dimensions, center=true);
