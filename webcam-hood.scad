@@ -328,7 +328,7 @@ module bracket_ledge_space() {
 module punch_ledge_base() {
 	offset = [0, -half(NEW_BRACKET_WIDTH), 0];
 
-	lenght = MOUNTING_SPACE + 2 * SNAP_FIT_GAP;
+	lenght = LEDGE_LENGHT + 2 * SNAP_FIT_GAP;
 	height = 2 * BRACKET_DEPTH;
 	dimensions = [lenght, BRACKET_HEIGHT, height];
 
