@@ -6,9 +6,9 @@ $fn = 128;
 LEDGE_HEIGHT = 2.3;
 LENS_HOOD_WIDTH = 0.6;
 
-BRACKET_DEPTH = 5 + LEDGE_HEIGHT / 2;
 BRACKET_LENGHT = 48;
 BRACKET_WIDTH = 29.5;
+BRACKET_HEIGHT = 5 + LEDGE_HEIGHT / 2;
 BRACKET_ANGLE = 4.7;
 
 HOOD_HEIGHT = 25;
@@ -23,7 +23,7 @@ IMAGE_WIDTH = 109;
 IMAGE_DISTANCE = 80;
 IMAGE_WIDTH_INCLINATION = IMAGE_WIDTH / IMAGE_DISTANCE;
 
-MOUNTING_MARGIN = IMAGE_WIDTH_INCLINATION * BRACKET_DEPTH;
+MOUNTING_MARGIN = IMAGE_WIDTH_INCLINATION * BRACKET_HEIGHT;
 LEDGE_LENGHT = 2 * (HOOD_PROXIMAL_RADIUS * HOOD_ASPECT + LEDGE_HEIGHT * IMAGE_WIDTH_INCLINATION) + 2 * MOUNTING_MARGIN;
 HOOD_PLATE_LENGHT = BRACKET_LENGHT - 2;
 HOOD_PLATE_WIDTH = BRACKET_WIDTH - 2;
@@ -304,11 +304,11 @@ module edge_block(position) {
 
 module hook_block(position, angle) {
 	horizontal_offset = [0, position, half(LEDGE_HEIGHT)];
-	vertical_offset = [0, 0, -half(BRACKET_DEPTH)];
+	vertical_offset = [0, 0, -half(BRACKET_HEIGHT)];
 
 	coordinates = [angle, 0, 0];
 
-	dimensions = [BRACKET_LENGHT, LEDGE_HEIGHT, BRACKET_DEPTH];
+	dimensions = [BRACKET_LENGHT, LEDGE_HEIGHT, BRACKET_HEIGHT];
 
 	translate(horizontal_offset)
       rotate(coordinates)
@@ -325,7 +325,7 @@ module punch_ledge_base() {
 	offset = [0, -half(BRACKET_WIDTH), 0];
 
 	lenght = LEDGE_LENGHT + 2 * SNAP_FIT_GAP;
-	height = 2 * BRACKET_DEPTH;
+	height = 2 * BRACKET_HEIGHT;
 	dimensions = [lenght, BRACKET_WIDTH, height];
 
 	translate(offset)
