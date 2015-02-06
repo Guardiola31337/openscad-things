@@ -354,32 +354,5 @@ module punch() {
 		base(-SNAP_FIT_GAP);
 }
 
-//complete_mount();
-//mounting_animation();
 print();
 
-module complete_mount() {
-	color("red")
-		clip_bracket();
-	mounted_hood();
-	%camera();
-}
-
-// How it looks while attempting to mount to see that there is enough space.
-module mounting_animation() {
-	// Two 'scenes': approach and marry.
-	if ($t < 0.5) {
-		assign(scene_t = 2 * (0.5 - $t)) {  // 1..0
-			translate([0, scene_t * (BRACKET_HEIGHT + 5), scene_t * HOOD_HEIGHT/5 + (BRACKET_DEPTH + WALL_WIDTH/2)])
-				rotate([scene_t * 20, 0, 0])
-					clip_bracket();
-		}
-	} else {
-		assign(scene_t = 1 - 2 * ($t - 0.5)) {  // 1..0
-			translate([0, 0, scene_t * (BRACKET_DEPTH + WALL_WIDTH/2)])
-				clip_bracket();
-		}
-	}
-	color("lightgreen")
-		mounted_hood();
-}
