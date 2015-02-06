@@ -326,7 +326,9 @@ module bracket_ledge_space() {
 }
 
 module punch_ledge_base() {
-	translate([0, -BRACKET_HEIGHT/2, 0])
+	offset = [0, -BRACKET_HEIGHT/2, 0];
+
+	translate(offset)
 		cube([MOUNTING_SPACE + 2 * SNAP_FIT_GAP, BRACKET_HEIGHT, 2 * BRACKET_DEPTH], center=true);
 }
 
