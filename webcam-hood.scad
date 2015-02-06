@@ -343,7 +343,7 @@ module punch_ledge_rounded() {
 	height = 3 * LEDGE_HEIGHT;
 
 	scale(factors)
-		cylinder(r = radius, h = height, center=true);
+		cylinder(r = radius, h = height, center = TRUE);
 }
 
 module punch() {
