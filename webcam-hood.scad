@@ -50,7 +50,7 @@ SQUARE_WIDTH = 6;
 CAMERA_DIMENSIONS = [60, BRACKET_WIDTH, 25];
 CAMERA_EDGE_RADIUS = 5;
 
-module little_hood() {
+module webcam_hood() {
     hood();
     clip();
 }
@@ -351,5 +351,5 @@ module punch() {
 		base(-SNAP_FIT_GAP);
 }
 
-little_hood();
+webcam_hood();
 
